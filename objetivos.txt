@@ -1,0 +1,10 @@
+Para que tu aplicación sea exitosa, sería importante que considere cómo los usuarios interactúan con la aplicación, qué información necesitan para tomar decisiones informadas sobre sus finanzas, y cómo pueden hacerlo de manera fácil y rápida. Algunas características que podrías considerar incluir en tu aplicación son:
+
+Un registro de gastos y entradas de ingresos para ayudar a los usuarios a realizar un seguimiento de sus gastos diarios y su presupuesto mensual.
+Un análisis de gastos para que los usuarios puedan visualizar y comprender mejor en qué están gastando su dinero.
+Una función de recordatorio de pagos para que los usuarios nunca se olviden de pagar sus facturas y evitar cargos por pagos atrasados.
+La capacidad de categorizar gastos para que los usuarios puedan identificar patrones de gasto y encontrar áreas en las que puedan ahorrar dinero.
+Una herramienta de presupuesto que permita a los usuarios establecer metas de gasto y monitorear su progreso.
+plantearte un reto para ahorrar poco a poco durante varias semanas, incrementando poco a poco la cantidad de dinero que aportas.
+poder controlar las finanzas en pareja. Puedes añadir tu cuenta y la de tu pareja, y ambos podréis llevar el registro de cuánto gastáis y en qué se os va el dinero.
+tener una interfaz para ver todos los gastos en un calendario
