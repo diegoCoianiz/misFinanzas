@@ -11,7 +11,7 @@ const Carousel = ({ children }) => {
         setCurrentIndex((currentIndex + 1) % children.length);
         setActiveSlideOpacity(1);
       }, 500);
-    }, 8000);
+    }, 6000);
   
     return () => clearInterval(intervalId);
   }, [currentIndex, children]);
@@ -36,17 +36,45 @@ const Carousel = ({ children }) => {
       margin: '0px',
       padding: '0px',
       opacity: activeSlideOpacity,
-      transition: 'opacity 0.5s ease-in-out'
+      transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+      transform: 'translateX(0%)'
     },
     prevSlide: {
       display: 'none',
-      opacity: '0'
+      margin: '0px',
+      padding: '0px',
+      opacity: '0',
+      transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+      transform: 'translateX(100%)'
     },
     nextSlide: {
       display: 'none',
-      opacity: '0'
+      margin: '0px',
+      padding: '0px',
+      opacity: '0',
+      transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+      transform: 'translateX(-100%)'
+    },
+    buttonContainer: {
+      display: "flex",
+      justifyContent: "center",
+      marginTop: "10px"
+    },
+    button: {
+      width: "10px",
+      height: "10px",
+      borderRadius: "50%",
+      margin: "0px 5px",
+      cursor: "pointer"
+    },
+    activeButton: {
+      backgroundColor: "red"
+    },
+    inactiveButton: {
+      backgroundColor: "gray"
     }
   };
+  
 
   return (
     <div className="carousel">
@@ -61,7 +89,20 @@ const Carousel = ({ children }) => {
           </div>
         ))}
       </div>
-      {/* <hr></hr> */}
+      <div style={styles.buttonContainer}>
+        {children.map((child, index) => (
+          <div
+            key={index}
+            style={{
+              ...styles.button,
+              ...(index === currentIndex
+                ? styles.activeButton
+                : styles.inactiveButton)
+            }}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

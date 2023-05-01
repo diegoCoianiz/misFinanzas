@@ -28,7 +28,7 @@ body {
 }
 
 .indexRightSection form {
-  margin-top: 8%;
+  margin-top: 16%;
 }
 
 .indexRightSection input,
@@ -104,7 +104,7 @@ button {
   }
 }
 
-/* CEL: 383px */
+/* CEL: 375px */
 @media screen and (max-width: 650px) {
   * {
     font-family: 'Times New Roman', Times, serif;

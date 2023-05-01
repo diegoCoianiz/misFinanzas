@@ -68,7 +68,7 @@ const TransactionBox = ({ amount, date, category, type, notes, transaction_id })
             <button style={type === 'egreso' ? { ...styles.colorButton, backgroundColor: buttonColor[1], boxShadow: "2px 2px 2px #1E9EA8" } : { ...styles.colorButton, backgroundColor: buttonColor[1], boxShadow: "2px 2px 2px #7B2F59" }}></button>
             <p style={{ margin: "0px 10px" }}>{"<"}{category}{">"}</p>
           </div>
-          <p style={{margin:"0px", fontSize:"14px"}}>
+          <p style={{margin:"0px", fontSize:"13px"}}>
           {desiredDate}hs
           </p>
         </div>

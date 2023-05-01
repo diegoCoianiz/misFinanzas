@@ -48,7 +48,7 @@ const Index = () => {
       <FixedTitle />
 
       <div className='indexBody' style={{ marginTop: "65px" }}>
-        <div className='indexLeftSection'>
+        <section className='indexLeftSection'>
           <Carousel>
             <CarouselBox text={"Creá una cuenta personalizada y comenzá a registrar tus gastos diarios de forma instantánea."} image={"https://cdn-icons-png.flaticon.com/512/1177/1177568.png"} marginTop={"15px"} />
             <CarouselBox text={"Filtrá por etiquetas personalizadas, categoriza e identificá patrones de gastos y áreas en las que puedes ahorrar dinero."} image={"https://cdn-icons-png.flaticon.com/512/10008/10008777.png"} marginTop={"-10px"} />
@@ -60,8 +60,8 @@ const Index = () => {
             <h6 style={{ textAlign: "start", marginBottom: "-15px", color: "yellow" }}>Mensaje del autor:</h6>
             <p>"Como proyecto independiente, MisFinanzas se enfoca en las necesidades específicas de los usuarios, no en los intereses de grandes emprendimientos, y está diseñada para ayudarte a manejar tus números de manera efectiva sin preocuparte por otros asuntos. Recomiendo MisFinanzas para cualquier persona que busque una manera fácil y segura de llevar un registro de sus gastos diarios y mantenerse al tanto de sus finanzas personales."  </p>
           </div>
-        </div>
-        <div className='indexRightSection' >
+        </section>
+        <section className='indexRightSection' >
           <form onSubmit={handleSubmit}>
             <input type="text" name="userName" placeholder="@Usuario" value={userForm.userName} onChange={handleChange} />
             <input type={isPasswordVisible ? "text" : "password"} name="password" placeholder="@Contraseña" value={userForm.password} onChange={handleChange} />
@@ -78,27 +78,32 @@ const Index = () => {
           </form>
           <Link href={"/register"} style={{ textDecoration: "none" }}><button style={{ cursor: "pointer", backgroundColor: " #1d3cc2", color: "white" }}>
             Registrarse</button></Link>
-        </div>
+        </section>
       </div>
-      <div style={{ borderTop: "1px solid white", }}>
+      <footer style={{ borderTop: "1px solid white", }}>
         <p style={{ fontSize: "15px" }}>Copyright © 2023<Link href={"https://juandiegocoianiz.vercel.app"} target='_blank' style={{ textDecoration: "none", color: "#FFBA08" }}> Juan Diego Coianiz</Link>. Todos los derechos reservados. </p>
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center", marginTop:"-20px"}}>
-          <Image src="https://cdn-icons-png.flaticon.com/512/1060/1060678.png" width={50} height={50} alt={'logo'}/>
-          <h1 style={{ fontSize: "30px", marginLeft: "15px" }}>MisFinanzas</h1>
-        </div>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"center", alignItems: "center", marginTop: "-15px", }}>
+        <div>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "-20px" }}>
+              <Image src="https://cdn-icons-png.flaticon.com/512/1060/1060678.png" width={50} height={50} alt={'logo'} />
+              <h1 style={{ fontSize: "30px", marginLeft: "15px" }}>MisFinanzas</h1>
+            </div>
+            <p style={{ fontSize: "12px", marginTop: "-25px", marginLeft: "85px" }}>utiliza las siguientes tecnologías:</p>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginTop: "-10px", }}>
 
-          <Image src="https://cdn-icons-png.flaticon.com/512/919/919825.png" width={50} height={50} alt={"nodejs"} style={{margin:"0px 20px"}}/>
-          <div style={{ display:"flex", margin:"0px 20px"}}>
-          <Image src="https://cdn-icons-png.flaticon.com/512/649/649769.png" width={50} height={50} alt={"vercel"} style={{marginTop:"10px"}}  />
-          <h1 style={{fontSize: "30px"}}>Vercel</h1>
-          </div> 
-          <div style={{ display:"flex", margin:"0px 20px"}}>
-          <Image src="https://cdn-icons-png.flaticon.com/512/4315/4315005.png" width={50} height={50} alt={"MongDB"} style={{marginTop:"10px"}}  />
-          <h1 style={{fontSize: "30px"}}>MongoDB</h1>
+            <Image src="https://cdn-icons-png.flaticon.com/512/919/919825.png" width={60} height={60} alt={"nodejs"} style={{ margin: "0px 20px" }} />
+            <div style={{ display: "flex", margin: "0px 20px" }}>
+              <Image src="https://cdn-icons-png.flaticon.com/512/649/649769.png" width={50} height={50} alt={"vercel"} style={{ marginTop: "10px" }} />
+              <h1 style={{ fontSize: "30px" }}>Vercel</h1>
+            </div>
+            <div style={{ display: "flex", margin: "0px 20px" }}>
+              <Image src="https://cdn-icons-png.flaticon.com/512/4315/4315005.png" width={50} height={50} alt={"MongDB"} style={{ marginTop: "10px" }} />
+              <h1 style={{ fontSize: "30px" }}>MongoDB</h1>
+            </div>
           </div>
         </div>
-      </div>
+      </footer>
     </>
   )
 }
