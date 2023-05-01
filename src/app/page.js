@@ -56,11 +56,17 @@ const Index = () => {
             <CarouselBox text={"¡Únete a nuestra comunidad y comienza a tomar el control de tus finanzas!"} image={"https://cdn-icons-png.flaticon.com/512/5141/5141636.png"} marginTop={"15px"} />
           </Carousel>
 
-          <div>
+          <div style={{ marginTop: '20px' }}>
+            <h2 style={{ textAlign: "center", marginBottom: "5px", color: "yellow" }}>¿Por qué elegir MisFinanzas?</h2>
+            <p style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>"MisFinanzas es la aplicación financiera independiente y gratuita que te ayuda a tomar el control de tus cuentas de manera efectiva. Nos enfocamos en las necesidades específicas de nuestros usuarios, implementando mejoras constantemente para hacer tu día a día más eficiente. En nuestra comunidad siempre buscamos crecer y superarnos"</p>
+          </div>
+
+          <div style={{ marginTop: '-20px' }}>
             <h6 style={{ textAlign: "start", marginBottom: "-15px", color: "yellow" }}>Mensaje del autor:</h6>
-            <p>"Como proyecto independiente, MisFinanzas se enfoca en las necesidades específicas de los usuarios, no en los intereses de grandes emprendimientos, y está diseñada para ayudarte a manejar tus números de manera efectiva sin preocuparte por otros asuntos. Recomiendo MisFinanzas para cualquier persona que busque una manera fácil y segura de llevar un registro de sus gastos diarios y mantenerse al tanto de sus finanzas personales."  </p>
+            <p>Hola! En MisFinanzas nos enfocamos en ti y en tus necesidades financieras. Queremos ayudarte a tomar el control de tus gastos diarios de manera efectiva y segura, para que puedas lograr tus metas y sueños. Únete a nuestra comunidad y descubre cómo podemos hacer que tus finanzas personales sean más fáciles y agradables. Te esperamos!</p>
           </div>
         </section>
+
         <section className='indexRightSection' >
           <form onSubmit={handleSubmit}>
             <input type="text" name="userName" placeholder="@Usuario" value={userForm.userName} onChange={handleChange} />

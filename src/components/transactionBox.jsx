@@ -4,7 +4,7 @@ import React from 'react'
 import { incomeCategoryColors, expenseCategoryColors } from '@/data/categoryAndColors'
 
 const TransactionBox = ({ amount, date, category, type, notes, transaction_id }) => {
-  const notesLength = 80
+  const notesLength = 87
   let buttonColor = "";
   const createButtonColor = () => {
     if (type === 'ingreso') buttonColor = incomeCategoryColors.filter(color => { return color[0] === category })[0]
