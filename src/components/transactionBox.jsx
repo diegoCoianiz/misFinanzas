@@ -4,6 +4,7 @@ import React from 'react'
 import { incomeCategoryColors, expenseCategoryColors } from '@/data/categoryAndColors'
 
 const TransactionBox = ({ amount, date, category, type, notes, transaction_id }) => {
+  const notesLength = 80
   let buttonColor = "";
   const createButtonColor = () => {
     if (type === 'ingreso') buttonColor = incomeCategoryColors.filter(color => { return color[0] === category })[0]
@@ -73,7 +74,7 @@ const TransactionBox = ({ amount, date, category, type, notes, transaction_id })
         <div style={{ display: 'flex' }}>
           <h1 className='TransactionBox__amount'> {type === 'egreso' ? '-' : '+'}${amount}</h1>
           <div style={{marginTop:"-2px", width:"100%"}}>
-          <p className='TransactionBox__notes'>{notes.length < 95 ? notes : notes.slice(0, 95)+"..."}</p>
+          <p className='TransactionBox__notes' style={{marginLeft:"20px" }}>{notes.length < notesLength ? notes : notes.slice(0, notesLength)+"..."}</p>
           </div>
         </div>
       </div>

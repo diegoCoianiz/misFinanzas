@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 const Carousel = ({ children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeSlideOpacity, setActiveSlideOpacity] = useState(1);
@@ -10,7 +11,7 @@ const Carousel = ({ children }) => {
         setCurrentIndex((currentIndex + 1) % children.length);
         setActiveSlideOpacity(1);
       }, 500);
-    }, 5000);
+    }, 8000);
   
     return () => clearInterval(intervalId);
   }, [currentIndex, children]);
@@ -25,16 +26,10 @@ const Carousel = ({ children }) => {
   ];
 
   const styles = {
-    // carouselSlides: {
-    //   height: '130px',
-    //   overflow: 'hidden',
-    //   padding: '0px'
-    // },
-    carouselSlide: {
-      margin: '0px',
-      padding: '0px',
-      opacity: '0',
-      width: '100%'
+    carouselSlides: {
+      height: '180px',
+      overflow: 'hidden',
+      padding: '0px'
     },
     activeSlide: {
       display: 'flex',
@@ -56,7 +51,7 @@ const Carousel = ({ children }) => {
   return (
     <div className="carousel">
       <hr></hr>
-      <div className="carouselSlides" style={styles.carouselSlides}>
+      <div style={styles.carouselSlides}>
         {slides.map((slide, index) => (
           <div
             key={index}

@@ -27,7 +27,7 @@ export default function dashboard({ searchParams }) {
 
   return (
     <>
-      <div className='indexBody'>
+      <div className='indexBody' style={{marginTop: "15px"}}>
         <div className='indexLeftSection' style={{ padding: "10px", paddingTop:"0px" }}>
           <div style={{ display: "flex", alignItems: "center", marginLeft: "-15px", marginBottom:"-25px" }}>
             <DashboardEntryButtonsNavBar userId={searchParams.id} />

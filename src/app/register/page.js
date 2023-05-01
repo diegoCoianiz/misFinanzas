@@ -65,10 +65,7 @@ const Register = () => {
                         <h6 style={{ textAlign: "start", margin: "0px", marginBottom: "-18px", color: "yellow" }}>Mensaje del autor:</h6>
                         <p>'Mis Finanzas' ha sido diseñada pensando en la simplicidad y la intuitividad para el usuario. No solicitamos información innecesaria y no estamos interesados en obtener datos personales de nuestros usuarios. Nuestra única finalidad es hacer que la gestión de las finanzas personales sea más sencilla y accesible para todos. Queremos ayudar a las personas a tener un mayor control de sus gastos e ingresos, y permitirles tomar decisiones financieras más informadas. </p>
                     </div>
-                    <div style={{ display: "flex", textAlign: "start" }}>
-                        <Image src={"https://img.icons8.com/?size=512&id=64994&format=png"} width={200} height={125} alt={"img"} />
-                        <p> Registrá tus ingresos y gastos, establecé metas de ahorro y controlá tu presupuesto diario. Administrá en equipo las compras grupales, tené una visión completa de tus finanzas y tomá decisiones más informadas. ¡Únete a nuestra comunidad y comienza a tomar el control de tus finanzas!" </p>
-                    </div>
+                    <Image src={"https://cdn-icons-png.flaticon.com/512/7752/7752761.png"} alt={"logo"} width={180} height={180}/>
                 </div>
                 <div className='indexRightSection'>
                     <p style={{ textAlign: "start", margin: "0px" }}>Nuevo registro:</p>
@@ -82,9 +79,6 @@ const Register = () => {
                         }
                     </form>
                 </div>
-            </div>
-            <div style={{ borderTop: "1px solid white" }}>
-                <p>todos los derechos reservados.<Link href={"https://juandiegocoianiz.vercel.app"} target='_blank' style={{ textDecoration: "none" }}> Juan Diego Coianiz </Link> </p>
             </div>
         </>
     )

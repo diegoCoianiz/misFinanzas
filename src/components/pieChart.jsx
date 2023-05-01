@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useMemo, useCallback } from "react";
 import Chart from "chart.js/auto";
 import { incomeCategoryColors, expenseCategoryColors } from "@/data/categoryAndColors";
+import Image from "next/image";
 
 const PieChart = ({ chart }) => {
   const categoryCodes = useMemo(() => createLabelColors([...incomeCategoryColors, ...expenseCategoryColors]), []);
@@ -66,32 +67,34 @@ const PieChart = ({ chart }) => {
 
   return (
     <>
-        <div>
+      <div>
         {pieChartView ? (
           <>
-          <h1 style={{ textAlign: "start", margin: "0px" }}> {"<"} Estadisticas  {">"}</h1>
-          <p style={styles.p} >Total de gastos: ${totalAmount} {"<"} {Math.floor((totalAmount / totalIncome) * 100)}% de ${totalIncome} {">"} </p>
-          <p style={styles.p}>Meta de ahorro: $xxx {"<"} xx% del capital {">"} </p>
-          <p style={styles.p}>El promedio de gasto por día: $xxx coincide con la espectativa de ahorro! {"<"} $xxx por día, xx% del capital {">"} sigue así!</p>
-          <br></br>
-          <h1 style={styles.p}> {"<"} Gastos por categoría  {">"}</h1>
+            <h1 style={{ textAlign: "start", margin: "0px" }}> {"<"} Estadisticas  {">"}</h1>
+            <p style={styles.p} >Total de gastos: ${totalAmount} {"<"} {Math.floor((totalAmount / totalIncome) * 100)}% de ${totalIncome} {">"} </p>
+            <p style={styles.p}>Categoria con mayor gasto: xxx {"<"} xx% del capital {">"} </p>
+            <p style={styles.p}>Meta de ahorro: $xxx {"<"} xx% del capital {">"} </p>
+            <p style={styles.p}>El promedio de gasto por día: $xxx coincide con la espectativa de ahorro! {"<"} $xxx por día, xx% del capital {">"} sigue así!</p>
+            <br></br>
+            <h1 style={styles.p}> {"<"} Gastos por categoría  {">"}</h1>
 
           </>
         ) : (
-        <div>
-          <h1 style={{ textAlign: "center", margin: "0px", marginBottom:"10px" }}> {"<"} Agregá al menos un gasto y un ingreso para visualizar nuestras estadisticas! {">"}</h1>
-        </div>
+          <div style={{marginBottom:"-350px"}}>
+            <h1 style={{ textAlign: "center", margin: "0px", marginBottom: "10px" }}> {"<"} Agregá al menos un gasto para visualizar nuestros gráficos! {">"}</h1>
+            <Image src={"https://cdn-icons-png.flaticon.com/512/3589/3589881.png"} width={300} height={300} alt={"chart"} />
+          </div>
         )}
 
-        { !!chartContainer ? (
+        {!!chartContainer ? (
           <>
-          <canvas ref={chartContainer} />
-          <br></br>
+            <canvas ref={chartContainer} />
+            <br></br>
           </>
-        ) : ( 
-          <h1 style={{ textAlign: "center", margin: "0px", marginBottom:"10px" }}> {"<"} Agregá al menos un gasto para visualizar nuestros gráficos! {">"}</h1>
+        ) : (
+<></>
         )}
-        </div>
+      </div>
     </>
   );
 };

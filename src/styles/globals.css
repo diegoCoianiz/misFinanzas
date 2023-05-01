@@ -1,9 +1,9 @@
 /* CARRUSEL */
-.carouselSlides {
-  height: '130px';
+/* .carouselSlides {
+  height: '350px';
   overflow: 'hidden';
   padding: '0px'
-}
+} */
 
 /* ----------- */
 
@@ -98,11 +98,11 @@ button {
   }
 
   /* CARRUSEL */
-  .carouselSlides {
+  /* .carouselSlides {
     height: '50px';
     overflow: 'hidden';
     padding: '0px'
-  }
+  } */
 
   /* ----------- */
 }
@@ -113,7 +113,7 @@ button {
   }
 }
 
-/* CEL: 389px */
+/* CEL: 383px */
 @media screen and (max-width: 650px) {
   * {
     font-family: 'Times New Roman', Times, serif;
@@ -127,6 +127,7 @@ button {
   .indexBody {
     display: flex;
     flex-direction: column;
+    min-height: 80vh
   }
 
   .indexLeftSection {
