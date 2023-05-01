@@ -1,12 +1,3 @@
-/* CARRUSEL */
-/* .carouselSlides {
-  height: '350px';
-  overflow: 'hidden';
-  padding: '0px'
-} */
-
-/* ----------- */
-
 * {
   font-family: cursive;
   font-size: 17px;
@@ -37,7 +28,7 @@ body {
 }
 
 .indexRightSection form {
-  margin-top: 5%;
+  margin-top: 8%;
 }
 
 .indexRightSection input,
@@ -117,11 +108,11 @@ button {
 @media screen and (max-width: 650px) {
   * {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
+    font-size: 17px;
   }
 
   body {
-    padding: 0px 20px;
+    padding: 0px 10px;
   }
 
   .indexBody {
@@ -142,8 +133,9 @@ button {
   }
 
   .TransactionBox__notes {
-    font-size: 12px;
+    font-size: 13px;
     margin-left: 5px;
+    margin-top: -15px;
   }
 
   .TransactionBox__amount {

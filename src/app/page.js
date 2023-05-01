@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from "next/navigation"
 import Carousel from '@/components/carousel'
+import CarouselBox from '@/components/carouselBox'
+import FixedTitle from '@/components/fixedTitle'
 
 const Index = () => {
   const router = useRouter()
@@ -43,21 +45,15 @@ const Index = () => {
 
   return (
     <>
-      <div className='indexBody' style={{ marginTop: "6%" }}>
-        <div className='indexLeftSection' style={{ padding: "10px" }}>
+    <FixedTitle />
+
+      <div className='indexBody' style={{ marginTop: "65px"  }}>
+        <div className='indexLeftSection'>
           <Carousel>
-            <div style={{ display: "flex", textAlign: "center", marginTop: "20px" }}>
-              <Image src={"https://cdn-icons-png.flaticon.com/512/1804/1804922.png"} width={200} height={125} alt={"img"} />
-              <p>MisFinanzas es la herramienta perfecta para llevar un registro de tus gastos diarios de manera fácil y eficiente. Creá una cuenta personalizada y comenzá a registrar tus gastos de forma instantánea.</p>
-            </div>
-            <div style={{ display: "flex", textAlign: "center", marginTop: "20px" }}>
-              <Image src={"https://cdn-icons-png.flaticon.com/512/10008/10008777.png"} width={200} height={125} alt={"img"} />
-              <p>Visualizá tus gastos de manera clara y concisa, categoriza e identificá patrones de gastos y áreas en las que puedes ahorrar dinero. Filtrá por etiquetas personalizadas y tené un control completo de tus finanzas personales.</p>
-            </div>
-            <div style={{ display: "flex", textAlign: "center" }}>
-              <Image src={"https://cdn-icons-png.flaticon.com/512/809/809448.png"} width={200} height={125} alt={"img"} />
-              <p> Registrá tus ingresos y gastos, establecé metas de ahorro y controlá tu presupuesto diario. Administrá en equipo las compras grupales, tené una visión completa de tus finanzas y tomá decisiones más informadas. ¡Únete a nuestra comunidad y comienza a tomar el control de tus finanzas! </p>
-            </div>
+            <CarouselBox text={"Creá una cuenta personalizada y comenzá a registrar tus gastos diarios de forma instantánea."} image={"https://cdn-icons-png.flaticon.com/512/1804/1804922.png"} marginTop={"15px"}/>
+            <CarouselBox text={"Filtrá por etiquetas personalizadas, categoriza e identificá patrones de gastos y áreas en las que puedes ahorrar dinero."} image={"https://cdn-icons-png.flaticon.com/512/10008/10008777.png"} marginTop={"-10px"}/>
+            <CarouselBox text={"Administrá en equipo las compras grupales, tené una visión completa de tus finanzas compartidas y tomá decisiones más informadas."} image={"https://cdn-icons-png.flaticon.com/512/809/809448.png"} />
+            <CarouselBox text={"¡Únete a nuestra comunidad y comienza a tomar el control de tus finanzas!"} image={"https://cdn-icons-png.flaticon.com/512/5141/5141636.png"} marginTop={"15px"}/>
           </Carousel>
 
           <div>

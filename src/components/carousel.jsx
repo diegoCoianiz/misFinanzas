@@ -27,7 +27,7 @@ const Carousel = ({ children }) => {
 
   const styles = {
     carouselSlides: {
-      height: '180px',
+      height: '257px',
       overflow: 'hidden',
       padding: '0px'
     },

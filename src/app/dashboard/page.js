@@ -66,7 +66,7 @@ export default function dashboard({ searchParams }) {
             }
           </div>
         </div>
-        <div className='indexRightSection' >
+        <div className='indexRightSection' style={{ minHeight: "370px"}}>
           <PieChart chart={transactions} />
         </div>
       </div>
