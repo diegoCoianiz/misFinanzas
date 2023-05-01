@@ -45,15 +45,15 @@ const Index = () => {
 
   return (
     <>
-    <FixedTitle />
+      <FixedTitle />
 
-      <div className='indexBody' style={{ marginTop: "65px"  }}>
+      <div className='indexBody' style={{ marginTop: "65px" }}>
         <div className='indexLeftSection'>
           <Carousel>
-            <CarouselBox text={"Creá una cuenta personalizada y comenzá a registrar tus gastos diarios de forma instantánea."} image={"https://cdn-icons-png.flaticon.com/512/1804/1804922.png"} marginTop={"15px"}/>
-            <CarouselBox text={"Filtrá por etiquetas personalizadas, categoriza e identificá patrones de gastos y áreas en las que puedes ahorrar dinero."} image={"https://cdn-icons-png.flaticon.com/512/10008/10008777.png"} marginTop={"-10px"}/>
+            <CarouselBox text={"Creá una cuenta personalizada y comenzá a registrar tus gastos diarios de forma instantánea."} image={"https://cdn-icons-png.flaticon.com/512/1177/1177568.png"} marginTop={"15px"} />
+            <CarouselBox text={"Filtrá por etiquetas personalizadas, categoriza e identificá patrones de gastos y áreas en las que puedes ahorrar dinero."} image={"https://cdn-icons-png.flaticon.com/512/10008/10008777.png"} marginTop={"-10px"} />
             <CarouselBox text={"Administrá en equipo las compras grupales, tené una visión completa de tus finanzas compartidas y tomá decisiones más informadas."} image={"https://cdn-icons-png.flaticon.com/512/809/809448.png"} />
-            <CarouselBox text={"¡Únete a nuestra comunidad y comienza a tomar el control de tus finanzas!"} image={"https://cdn-icons-png.flaticon.com/512/5141/5141636.png"} marginTop={"15px"}/>
+            <CarouselBox text={"¡Únete a nuestra comunidad y comienza a tomar el control de tus finanzas!"} image={"https://cdn-icons-png.flaticon.com/512/5141/5141636.png"} marginTop={"15px"} />
           </Carousel>
 
           <div>
@@ -62,27 +62,43 @@ const Index = () => {
           </div>
         </div>
         <div className='indexRightSection' >
-            <form onSubmit={handleSubmit}>
-              <input type="text" name="userName" placeholder="@Usuario" value={userForm.userName} onChange={handleChange} />
-              <input type={isPasswordVisible ? "text" : "password"} name="password" placeholder="@Contraseña" value={userForm.password} onChange={handleChange} />
-              <div style={{ display: "flex", alignItems: "center", width: "95%", marginLeft: "3%", marginTop: "-7px" }}>
-                <button type="button" style={{ display: "flex", background: "white", border: "none", width: "35px", height: "30px", cursor: "pointer", paddingTop: "4px", paddingLeft: "5px", marginRight: "10px" }} onClick={togglePasswordType}> {isPasswordVisible ? <Image src={"https://cdn-icons-png.flaticon.com/512/9178/9178093.png"} width={25} height={25} alt={"open"} /> : <Image src={"https://cdn-icons-png.flaticon.com/512/3495/3495857.png"} width={25} height={25} alt={"close"} />} </button>
-                <div>{isPasswordVisible ? <p>Ocultar contraseña </p> : <p> Mostrar contraseña </p>}</div>
-              </div>
-              <button type="submit" style={{ cursor: "pointer", backgroundColor: "#09af20", color: "white" }}>
-                Iniciar sesión
-              </button>
-              <Link href={"/"} style={{ textDecoration: "none" }}>
-                <p style={{ marginTop: "0px", color: "white" }}>Olvidaste tu contraseña?</p>
-              </Link>
-            </form>
-            <Link href={"/register"} style={{ textDecoration: "none" }}><button style={{ cursor: "pointer", backgroundColor: " #1d3cc2", color: "white" }}>
-              Registrarse</button></Link>
+          <form onSubmit={handleSubmit}>
+            <input type="text" name="userName" placeholder="@Usuario" value={userForm.userName} onChange={handleChange} />
+            <input type={isPasswordVisible ? "text" : "password"} name="password" placeholder="@Contraseña" value={userForm.password} onChange={handleChange} />
+            <div style={{ display: "flex", alignItems: "center", width: "95%", marginLeft: "3%", marginTop: "-7px" }}>
+              <button type="button" style={{ display: "flex", background: "white", border: "none", width: "35px", height: "30px", cursor: "pointer", paddingTop: "4px", paddingLeft: "5px", marginRight: "10px" }} onClick={togglePasswordType}> {isPasswordVisible ? <Image src={"https://cdn-icons-png.flaticon.com/512/9178/9178093.png"} width={25} height={25} alt={"open"} /> : <Image src={"https://cdn-icons-png.flaticon.com/512/3495/3495857.png"} width={25} height={25} alt={"close"} />} </button>
+              <div>{isPasswordVisible ? <p>Ocultar contraseña </p> : <p> Mostrar contraseña </p>}</div>
+            </div>
+            <button type="submit" style={{ cursor: "pointer", backgroundColor: "#09af20", color: "white" }}>
+              Iniciar sesión
+            </button>
+            <Link href={"/"} style={{ textDecoration: "none" }}>
+              <p style={{ marginTop: "0px", color: "white" }}>Olvidaste tu contraseña?</p>
+            </Link>
+          </form>
+          <Link href={"/register"} style={{ textDecoration: "none" }}><button style={{ cursor: "pointer", backgroundColor: " #1d3cc2", color: "white" }}>
+            Registrarse</button></Link>
+        </div>
+      </div>
+      <div style={{ borderTop: "1px solid white" }}>
+        <p style={{ fontSize: "15px" }}>Copyright © 2023<Link href={"https://juandiegocoianiz.vercel.app"} target='_blank' style={{ textDecoration: "none", color: "#FFBA08" }}> Juan Diego Coianiz</Link>. Todos los derechos reservados. </p>
+        <div style={{display: "flex", alignItems: "center", justifyContent: "center", marginTop:"-20px"}}>
+          <Image src="https://cdn-icons-png.flaticon.com/512/1060/1060678.png" width={50} height={50} alt={'logo'}/>
+          <h1 style={{ fontSize: "30px", marginLeft: "15px" }}>MisFinanzas</h1>
+        </div>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"center", alignItems: "center", marginTop: "-15px", }}>
+
+          <Image src="https://cdn-icons-png.flaticon.com/512/919/919825.png" width={50} height={50} alt={"nodejs"} style={{margin:"0px 20px"}}/>
+          <div style={{ display:"flex", margin:"0px 20px"}}>
+          <Image src="https://cdn-icons-png.flaticon.com/512/649/649769.png" width={50} height={50} alt={"vercel"} style={{marginTop:"10px"}}  />
+          <h1 style={{fontSize: "30px"}}>Vercel</h1>
+          </div> 
+          <div style={{ display:"flex", margin:"0px 20px"}}>
+          <Image src="https://cdn-icons-png.flaticon.com/512/4315/4315005.png" width={50} height={50} alt={"MongDB"} style={{marginTop:"10px"}}  />
+          <h1 style={{fontSize: "30px"}}>MongoDB</h1>
           </div>
         </div>
-        <div style={{ borderTop: "1px solid white" }}>
-          <p>todos los derechos reservados.<Link href={"https://juandiegocoianiz.vercel.app"} target='_blank' style={{ textDecoration: "none", color: "#FFBA08" }}> Juan Diego Coianiz </Link> </p>
-        </div>
+      </div>
     </>
   )
 }

@@ -50,7 +50,7 @@ const Carousel = ({ children }) => {
 
   return (
     <div className="carousel">
-      <hr></hr>
+      <br></br>
       <div style={styles.carouselSlides}>
         {slides.map((slide, index) => (
           <div
@@ -61,7 +61,7 @@ const Carousel = ({ children }) => {
           </div>
         ))}
       </div>
-      <hr></hr>
+      {/* <hr></hr> */}
     </div>
   );
 };
