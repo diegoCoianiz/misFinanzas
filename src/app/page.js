@@ -80,7 +80,7 @@ const Index = () => {
             Registrarse</button></Link>
         </div>
       </div>
-      <div style={{ borderTop: "1px solid white" }}>
+      <div style={{ borderTop: "1px solid white", }}>
         <p style={{ fontSize: "15px" }}>Copyright © 2023<Link href={"https://juandiegocoianiz.vercel.app"} target='_blank' style={{ textDecoration: "none", color: "#FFBA08" }}> Juan Diego Coianiz</Link>. Todos los derechos reservados. </p>
         <div style={{display: "flex", alignItems: "center", justifyContent: "center", marginTop:"-20px"}}>
           <Image src="https://cdn-icons-png.flaticon.com/512/1060/1060678.png" width={50} height={50} alt={'logo'}/>
