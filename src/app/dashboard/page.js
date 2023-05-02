@@ -30,7 +30,7 @@ export default function dashboard({ searchParams }) {
     <>
       <div className='indexBody dashboardBody' style={{ marginTop: "15px" }}>
         <div className='indexLeftSection' style={{ padding: "10px", paddingTop: "0px" }}>
-          <div style={{ display: "flex", alignItems: "center", marginBottom: "-25px" }}>
+          <div className="dashboardBodyNavBar">
             <DashboardEntryButtonsNavBar userId={searchParams.id} />
           </div>
 
@@ -67,7 +67,7 @@ export default function dashboard({ searchParams }) {
             }
           </div>
         </div>  
-        <div className='indexRightSection'>
+        <div className='indexRightSection' style={{marginTop:"-25px"}}>
           <h1 style={{ textAlign: "start" }}>{"<"} Panel de control: {">"}</h1>
           <Carousel timeCondition={false}>
             <div>

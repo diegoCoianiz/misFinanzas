@@ -17,6 +17,13 @@ body {
   min-height: 70vh
 }
 
+.dashboardBodyNavBar {
+  display: flex;
+  margin: 0px 30px;
+  margin-bottom: 25px;
+  gap: 8%;
+}
+
 .indexLeftSection {
   flex-direction: column;
   width: 100%;
@@ -62,16 +69,20 @@ button {
 }
 
 .canvasChartContainer {
-  width: 500px;
-  height: 500px;
+  width: 480px;
+  height: 480px;
 }
 
 .activeSlideCarouselDiv {
-  height: 500px;
+  /* height: 500px; */
 }
 
 .carousel {
-  margin-top: 5%;
+  margin-top: -5%;
+}
+
+.silderButtonTime {
+  margin-top: 10px
 }
 
 @media screen and (min-width: 850px) {
@@ -125,6 +136,12 @@ button {
     padding: 0px 7px;
   }
 
+  .dashboardBodyNavBar {
+    margin: 0px;
+    margin-bottom: -25px;
+    gap: 1%;
+  }
+
   .indexLeftSection {
     order: 2;
     width: 100%;
@@ -161,8 +178,7 @@ button {
     height: 280px;
   }
 
-  .carousel {
-    margin-top: 0px;
+  .silderButtonTime {
+    margin-top: -10px
   }
-
 }

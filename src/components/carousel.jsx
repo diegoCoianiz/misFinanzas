@@ -74,8 +74,7 @@ const Carousel = ({ children, setTime = 4000, timeCondition = true }) => {
     buttonContainer: {
       display: "flex",
       justifyContent: "center",
-      marginTop: "10px"
-    },
+      },
     button: {
       width: "10px",
       height: "10px",
@@ -109,25 +108,25 @@ const Carousel = ({ children, setTime = 4000, timeCondition = true }) => {
           </div>
         ))}
       </div>
-      {timeCondition ? 
-      <div style={styles.buttonContainer}>
+      <div className="silderButtonTime" style={styles.buttonContainer}>
         {children.map((child, index) => (
           <div
-            key={index}
-            style={{
-              ...styles.button,
-              ...(index === currentIndex
-                ? styles.activeButton
-                : styles.inactiveButton)
+          key={index}
+          style={{
+            ...styles.button,
+            ...(index === currentIndex
+              ? styles.activeButton
+              : styles.inactiveButton)
             }}
             onClick={() => setCurrentIndex(index)}
-          />
-        ))}
-      </div> :
+            />
+            ))}
+      </div> 
+            {timeCondition === false ? 
       <div style={{display:"flex"}}>
         <button style={styles.silderButtonNoTime} onClick={() => prevSlide()}>{"<"}</button>
         <button style={styles.silderButtonNoTime}onClick={() => nextSlide()}>{">"}</button>
-      </div>
+      </div> : ""
       }
     </div>
   );

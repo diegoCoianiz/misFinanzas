@@ -1,7 +1,7 @@
 import React from 'react'
 import EntryButton from './entryButton'
 
-const DashboardEntryButtonsNavBar = ({userId}) => {
+const DashboardEntryButtonsNavBar = ({ userId }) => {
 
     const newSize = 10
 
@@ -9,11 +9,10 @@ const DashboardEntryButtonsNavBar = ({userId}) => {
         <>
             {
                 buttons.map((button, key) => {
-                    return <div key={key} style={{display:"flex", flexDirection:"column"}}>
-                        <EntryButton img={button.img} alt={button.alt } width={button.width + newSize} height={button.height + newSize} userId={userId} />
-                        <h6 style={{marginTop:"0px"}}>{button.text}</h6>
-                    </div>
-                }
+                    return <div key={key} style={{ display: "flex", flexDirection: "column", margin:"0px" }}>
+                        <EntryButton img={button.img} alt={button.alt} width={button.width + newSize} height={button.height + newSize} userId={userId} />
+                        <h6 style={{ marginTop: "0px" }}>{button.text}</h6>
+                    </div>}
                 )
             }
         </>
