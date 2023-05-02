@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Carousel = ({ children }) => {
+const Carousel = ({ children, setTime = 4000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeSlideOpacity, setActiveSlideOpacity] = useState(1);
 
@@ -11,7 +11,7 @@ const Carousel = ({ children }) => {
         setCurrentIndex((currentIndex + 1) % children.length);
         setActiveSlideOpacity(1);
       }, 500);
-    }, 6000);
+    }, setTime);
   
     return () => clearInterval(intervalId);
   }, [currentIndex, children]);
@@ -27,7 +27,6 @@ const Carousel = ({ children }) => {
 
   const styles = {
     carouselSlides: {
-      height: '257px',
       overflow: 'hidden',
       padding: '0px'
     },
@@ -83,6 +82,7 @@ const Carousel = ({ children }) => {
         {slides.map((slide, index) => (
           <div
             key={index}
+            className="activeSlideCarouselDiv"
             style={index === 1 ? styles.activeSlide : index === 0 ? styles.prevSlide : styles.nextSlide}
           >
             {slide}

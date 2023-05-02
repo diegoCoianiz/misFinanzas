@@ -61,6 +61,19 @@ button {
   margin-top: 25px;
 }
 
+.canvasChartContainer {
+  width: 500px;
+  height: 500px;
+}
+
+.activeSlideCarouselDiv {
+  height: 500px;
+}
+
+.carousel {
+  margin-top: 5%;
+}
+
 @media screen and (min-width: 850px) {
   .newTransactionFormPage {
     margin: 0px 25%;
@@ -87,15 +100,6 @@ button {
   * {
     font-size: 12px;
   }
-
-  /* CARRUSEL */
-  /* .carouselSlides {
-    height: '50px';
-    overflow: 'hidden';
-    padding: '0px'
-  } */
-
-  /* ----------- */
 }
 
 @media screen and (max-width: 730px) {
@@ -146,6 +150,19 @@ button {
   .newTransactionFormPage_transactionBox {
     margin-left: 2%;
     width: 101%;
+  }
+
+  .canvasChartContainer {
+    width: 250px;
+    height: 250px
+  }
+
+  .activeSlideCarouselDiv {
+    height: 280px;
+  }
+
+  .carousel {
+    margin-top: 0px;
   }
 
 }

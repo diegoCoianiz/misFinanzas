@@ -1,21 +1,22 @@
 export const expenseCategoryColors = [
-  ["Alimentación", "#80ED99"],
-  ["Alquileres", "#E09F3E"],
-  ["Educación", "#7FC2FD"],
-    ["Entretenimiento", "#BDE0FE"],
-    ["Impuestos/legales", "#B5C99A"],
-    ["Mascotas", "#38A3A5"],
-    ["Regalos/donaciones", "#FFA6C8"],
-    ["Ropa/accesorios", "#FFC8DD"],
-    ["Salud", "#57CC99"],
-    ["Transporte", "#CDB4DB"],
-    ["Viajes", "#B28DC8"],
-    ["Otros", "#A4C3B2"],
-  ];
-  
-  export const incomeCategoryColors = [
-    ["Alquileres", "#FAA307"],
-    ["Jubilación", "#F48C06"],
-    ["Sueldo", "#FFBA08"],
-      ["Otros", "#FF9500"]
+  ["Alimentación", "#FF5733"],
+  ["Alquiler", "#D32F2F"],
+  ["Educación", "#E74C3C"],
+  ["Entretenimiento", "#C0392B"],
+  ["Impuestos/legales", "#FF5733"],
+  ["Mascotas", "#FF0000"],
+  ["Regalos/donaciones", "#FF5733"],
+  ["Ropa/accesorios", "#FF5733"],
+  ["Salud", "#C0392B"],
+  ["Transporte", "#FF5733"],
+  ["Viajes", "#D32F2F"],
+  ["Otro", "#E74C3C"],
+];
+
+
+export const incomeCategoryColors = [
+  ["Alquileres", "#8CB369"],
+  ["Jubilación", "#4CA768"],
+  ["Sueldo", "#45B16A"],
+  ["Otros", "#2E854C"]
 ];
