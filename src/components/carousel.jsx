@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-const Carousel = ({ children, setTime = 4000 }) => {
+const Carousel = ({ children, setTime = 4000, timeCondition = true }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeSlideOpacity, setActiveSlideOpacity] = useState(1);
 
+  if(timeCondition)
   useEffect(() => {
     const intervalId = setInterval(() => {
       setActiveSlideOpacity(0);
@@ -24,6 +25,22 @@ const Carousel = ({ children, setTime = 4000 }) => {
     children[currentIndex],
     children[nextSlideIndex],
   ];
+
+  const prevSlide = () => {
+    const lastIndex = children.length - 1;
+    const shouldResetIndex = currentIndex === 0;
+    const index = shouldResetIndex ? lastIndex : currentIndex - 1;
+  
+    setCurrentIndex(index < 0 ? lastIndex : index);
+  };
+  
+  const nextSlide = () => {
+    const lastIndex = children.length - 1;
+    const shouldResetIndex = currentIndex === lastIndex;
+    const index = shouldResetIndex ? 0 : currentIndex + 1;
+  
+    setCurrentIndex(index > lastIndex ? 0 : index);
+  };
 
   const styles = {
     carouselSlides: {
@@ -71,10 +88,13 @@ const Carousel = ({ children, setTime = 4000 }) => {
     },
     inactiveButton: {
       backgroundColor: "gray"
+    },
+    silderButtonNoTime: {
+      cursor: "pointer"
     }
+
   };
   
-
   return (
     <div className="carousel">
       <br></br>
@@ -89,6 +109,7 @@ const Carousel = ({ children, setTime = 4000 }) => {
           </div>
         ))}
       </div>
+      {timeCondition ? 
       <div style={styles.buttonContainer}>
         {children.map((child, index) => (
           <div
@@ -102,9 +123,15 @@ const Carousel = ({ children, setTime = 4000 }) => {
             onClick={() => setCurrentIndex(index)}
           />
         ))}
+      </div> :
+      <div style={{display:"flex"}}>
+        <button style={styles.silderButtonNoTime} onClick={() => prevSlide()}>{"<"}</button>
+        <button style={styles.silderButtonNoTime}onClick={() => nextSlide()}>{">"}</button>
       </div>
+      }
     </div>
   );
 };
 
 export default Carousel;
+

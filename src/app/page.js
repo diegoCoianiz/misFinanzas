@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { useRouter } from "next/navigation"
 import Carousel from '@/components/carousel'
 import CarouselBox from '@/components/carouselBox'
-import FixedTitle from '@/components/fixedTitle'
 
 const Index = () => {
   const router = useRouter()
@@ -45,9 +44,9 @@ const Index = () => {
 
   return (
     <>
-      <FixedTitle />
 
-      <div className='indexBody' style={{ marginTop: "65px" }}>
+
+      <div className='indexBody'>
         <section className='indexLeftSection'>
           <Carousel>
             <CarouselBox text={"Creá una cuenta personalizada y comenzá a registrar tus gastos diarios de forma instantánea."} image={"https://cdn-icons-png.flaticon.com/512/1177/1177568.png"} marginTop={"15px"} />
@@ -63,7 +62,7 @@ const Index = () => {
 
           <div style={{ marginTop: '-20px' }}>
             <h6 style={{ textAlign: "start", marginBottom: "-15px", color: "yellow" }}>Mensaje del autor:</h6>
-            <p>Hola! En MisFinanzas nos enfocamos en ti y en tus necesidades financieras. Queremos ayudarte a tomar el control de tus gastos diarios de manera efectiva y segura, para que puedas lograr tus metas y sueños. Únete a nuestra comunidad y descubre cómo podemos hacer que tus finanzas personales sean más fáciles y agradables. Te esperamos!</p>
+            <p>Hola! En MisFinanzas nos enfocamos en ti y en tus necesidades financieras. Queremos ayudarte a tomar el control de tus gastos diarios de manera efectiva y segura, para que puedas lograr tus metas y sueños. Únete a nuestra comunidad y descubre cómo podemos hacer que tus finanzas personales sean más fáciles y agradables.Te esperamos!</p>
           </div>
         </section>
 

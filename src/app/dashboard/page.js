@@ -30,11 +30,11 @@ export default function dashboard({ searchParams }) {
     <>
       <div className='indexBody dashboardBody' style={{ marginTop: "15px" }}>
         <div className='indexLeftSection' style={{ padding: "10px", paddingTop: "0px" }}>
-          <div style={{ display: "flex", alignItems: "center", marginLeft: "-15px", marginBottom: "-25px" }}>
+          <div style={{ display: "flex", alignItems: "center", marginBottom: "-25px" }}>
             <DashboardEntryButtonsNavBar userId={searchParams.id} />
           </div>
 
-          <h1 style={{ textAlign: "end" }}>{"<"} Historial{historialTransactionsPage > 0 ? ` . Página ${transactionsPageView + 1}` : ""} {">"}</h1>
+          <h1 style={{ textAlign: "start" }}>{"<"} Historial{historialTransactionsPage > 0 ? ` . Página ${transactionsPageView + 1}` : ""} {">"}</h1>
           {transactions.length > 0 ? (
             transactions
               .slice(transactionsPageView * 10, (transactionsPageView + 1) * 10)
@@ -68,12 +68,13 @@ export default function dashboard({ searchParams }) {
           </div>
         </div>  
         <div className='indexRightSection'>
-          <Carousel >
+          <h1 style={{ textAlign: "start" }}>{"<"} Panel de control: {">"}</h1>
+          <Carousel timeCondition={false}>
             <div>
               <PieChart chart={transactions} />
             </div>
             <p>
-              pepe
+              ""
             </p>
           </Carousel>
         </div>
