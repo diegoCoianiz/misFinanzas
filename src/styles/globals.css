@@ -20,7 +20,7 @@ body {
 .dashboardBodyNavBar {
   display: flex;
   margin: 0px 30px;
-  margin-bottom: 25px;
+  margin-bottom: -25px;
   gap: 8%;
 }
 
@@ -73,8 +73,12 @@ button {
   height: 480px;
 }
 
-.activeSlideCarouselDiv {
-  /* height: 500px; */
+.dashboardCarousel .activeSlideCarouselDiv {
+  height: 480px;
+}
+
+.indexPromotionCarousel .activeSlideCarouselDiv {
+  height: 250px;
 }
 
 .carousel {
@@ -174,7 +178,10 @@ button {
     height: 250px
   }
 
-  .activeSlideCarouselDiv {
+  .dashboardCarousel .activeSlideCarouselDiv {
+    height: 280px;
+  }
+  .indexPromotionCarousel .activeSlideCarouselDiv {
     height: 280px;
   }
 

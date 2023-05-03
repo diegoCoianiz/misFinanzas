@@ -22,7 +22,6 @@ const PieChart = ({ chart }) => {
         combinedDivision[category] = (combinedDivision[category] || 0) + Number(element.amount);
         categories.add(category);
         totalIncome += Number(element.amount);
-        totalAmount += Number(element.amount);
       } else {
         combinedDivision[category] = (combinedDivision[category] || 0) - Number(element.amount);
         categories.add(category);

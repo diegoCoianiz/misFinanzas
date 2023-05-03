@@ -48,12 +48,14 @@ const Index = () => {
 
       <div className='indexBody'>
         <section className='indexLeftSection'>
-          <Carousel>
-            <CarouselBox text={"Creá una cuenta personalizada y comenzá a registrar tus gastos diarios de forma instantánea."} image={"https://cdn-icons-png.flaticon.com/512/1177/1177568.png"} marginTop={"15px"} />
-            <CarouselBox text={"Filtrá por etiquetas personalizadas, categoriza e identificá patrones de gastos y áreas en las que puedes ahorrar dinero."} image={"https://cdn-icons-png.flaticon.com/512/10008/10008777.png"} marginTop={"-10px"} />
-            <CarouselBox text={"Administrá en equipo las compras grupales, tené una visión completa de tus finanzas compartidas y tomá decisiones más informadas."} image={"https://cdn-icons-png.flaticon.com/512/809/809448.png"} />
-            <CarouselBox text={"¡Únete a nuestra comunidad y comienza a tomar el control de tus finanzas!"} image={"https://cdn-icons-png.flaticon.com/512/5141/5141636.png"} marginTop={"15px"} />
-          </Carousel>
+          <div className='indexPromotionCarousel'>
+            <Carousel>
+              <CarouselBox text={"Creá una cuenta personalizada y comenzá a registrar tus gastos diarios de forma instantánea."} image={"https://cdn-icons-png.flaticon.com/512/1177/1177568.png"} marginTop={"15px"} />
+              <CarouselBox text={"Filtrá por etiquetas personalizadas, categoriza e identificá patrones de gastos y áreas en las que puedes ahorrar dinero."} image={"https://cdn-icons-png.flaticon.com/512/10008/10008777.png"} marginTop={"-10px"} />
+              <CarouselBox text={"Administrá en equipo las compras grupales, tené una visión completa de tus finanzas compartidas y tomá decisiones más informadas."} image={"https://cdn-icons-png.flaticon.com/512/809/809448.png"} />
+              <CarouselBox text={"¡Únete a nuestra comunidad y comienza a tomar el control de tus finanzas!"} image={"https://cdn-icons-png.flaticon.com/512/5141/5141636.png"} marginTop={"15px"} />
+            </Carousel>
+          </div>
 
           <div style={{ marginTop: '20px' }}>
             <h2 style={{ textAlign: "center", marginBottom: "5px", color: "yellow" }}>¿Por qué elegir MisFinanzas?</h2>

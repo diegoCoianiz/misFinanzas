@@ -53,7 +53,8 @@ const Carousel = ({ children, setTime = 4000, timeCondition = true }) => {
       padding: '0px',
       opacity: activeSlideOpacity,
       transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
-      transform: 'translateX(0%)'
+      transform: 'translateX(0%)',
+      // height: "esta categoría debe ser asignada en CSS <activeSlideCarouselDiv> para darle mediaQuerys"
     },
     prevSlide: {
       display: 'none',
