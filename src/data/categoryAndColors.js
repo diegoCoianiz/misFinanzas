@@ -22,5 +22,5 @@ export const incomeCategoryColors = [
 ];
 
 export const capitalAbailable = [
-  ["Capital disponible", "#00FF49"],
+  ["Capital disponible", "#03AB33"],
 ]

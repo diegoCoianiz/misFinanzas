@@ -20,7 +20,7 @@ const styles = {
     button: {
         width: '55px',
         height: '55px',
-        backgroundColor: 'rgb(0, 129, 37)',
+        backgroundColor: '#03AB33',
         border: '2px inset white',
         borderRadius: '50%',
         fontSize: '30px',
