@@ -1,5 +1,5 @@
 import React from 'react'
-import TransactionBox from "@/components/transactionBox";
+import TransactionBox from "@/components/dashboard/transactionBox";
 import { useState } from 'react';
 
 const TransactionsHistoryBox = ({ transactions }) => {
@@ -57,7 +57,7 @@ const TransactionsHistoryBox = ({ transactions }) => {
           totalOfPages > 0 && transactionsPageView > 0 &&
           <div>
             <div style={{ order: "2", marginLeft: "-10px", marginRight: "1px" }}>
-              <button style={styles.nextBack_Buttons} onClick={() => { setTransactionsPageView(transactionsPageView - 1) }}>Anterior ({transactionsPageView}) </button>
+              <button style={styles.nextBack_Buttons} onClick={() => { setTransactionsPageView(transactionsPageView - 1) }}> {"<"} (pág {transactionsPageView}) </button>
             </div>
           </div>
         }
@@ -65,7 +65,7 @@ const TransactionsHistoryBox = ({ transactions }) => {
           totalOfPages > 0 && totalOfPages !== transactionsPageView &&
           <div>
             <div style={{ order: "1" }}>
-              <button style={styles.nextBack_Buttons} onClick={() => { setTransactionsPageView(transactionsPageView + 1) }}>Siguiente ({transactionsPageView + 2}) </button>
+              <button style={styles.nextBack_Buttons} onClick={() => { setTransactionsPageView(transactionsPageView + 1) }}>  (pág {transactionsPageView + 2}) {">"} </button>
             </div>
           </div>
         }

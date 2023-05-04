@@ -20,3 +20,7 @@ export const incomeCategoryColors = [
   ["Sueldo", "#45B16A"],
   ["Otros", "#2E854C"]
 ];
+
+export const capitalAbailable = [
+  ["Capital disponible", "#00FF49"],
+]

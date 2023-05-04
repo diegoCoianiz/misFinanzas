@@ -1,10 +1,9 @@
 'use client'
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from 'react';
-import DashboardEntryButtonsNavBar from "@/components/navbarEntryButtons";
-import TransactionsHistoryBox from "@/components/transactionsHistoryBox";
-import PieChart from "@/components/pieChart";
-import Carousel from "@/components/carousel";
+import DashboardEntryButtonsNavBar from "@/components/dashboard/navbarEntryButtons";
+import TransactionsHistoryBox from "@/components/dashboard/transactionsHistoryBox";
+import ControlPanel from "@/components/controlPanel/controlPanel";
 
 export default function dashboard({ searchParams }) {
   const router = useRouter();
@@ -30,23 +29,10 @@ export default function dashboard({ searchParams }) {
           <div className="dashboardBodyNavBar">
             <DashboardEntryButtonsNavBar userId={searchParams.id} />
           </div>
-
-
           <TransactionsHistoryBox transactions={transactions}/>
-
         </div>
         <div className='indexRightSection' style={{ marginTop: "-25px" }}>
-          <h1 style={{ textAlign: "start" }}>{"<"} Panel de control: {">"}</h1>
-          <div className="dashboardCarousel">
-            <Carousel timeCondition={false}>
-              <div>
-                <PieChart chart={transactions} />
-              </div>
-              <p>
-                ""
-              </p>
-            </Carousel>
-          </div>
+          <ControlPanel transactions={transactions}/>
         </div>
       </div >
     </>

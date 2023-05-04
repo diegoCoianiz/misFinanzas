@@ -1,0 +1,79 @@
+import React, { useMemo, useCallback } from "react";
+import PieChart from "../pieChart";
+import { incomeCategoryColors, expenseCategoryColors, capitalAbailable } from "@/data/categoryAndColors";
+import PieChartDescriptions from "./pieChartDescriptions";
+
+const Stadistics = ({ chart }) => {
+  // Creamos la lista de códigos de colores solo una vez, usando useMemo
+  const categoryCodes = useMemo(() => createLabelColors([...incomeCategoryColors, ...expenseCategoryColors, ...capitalAbailable]), []);
+
+  // Función que calcula los datos para el gráfico, usando useCallback
+  const calculateChartData = useCallback(() => {
+    const combinedDivision = {};
+    const categories = new Set();
+    let totalIncome = 0;
+    let totalAmount = 0;
+
+    for (const element of chart) {
+      const category = element.category;
+      if (element.type === "ingreso") {
+        combinedDivision[category] = (combinedDivision[category] || 0) + Number(element.amount);
+        categories.add(category);
+        totalIncome += Number(element.amount);
+      } else {
+        combinedDivision[category] = (combinedDivision[category] || 0) - Number(element.amount);
+        categories.add(category);
+        totalAmount += Number(element.amount);
+      }
+    }
+
+    const values = Object.values(combinedDivision);
+    const labels = [...categories];
+
+    return {
+      labels,
+      values,
+      totalAmount,
+      totalIncome,
+    };
+  }, [chart]);
+
+  // Mostramos el gráfico solo si hay datos relevantes
+  const { totalIncome, totalAmount, labels, values } = calculateChartData();
+
+  const orderCategoriesForPieDescription = labels.map((label, index) => {
+    return {
+      label,
+      value: values[index],
+    }
+  }).filter((category) => category !== null);
+  orderCategoriesForPieDescription.sort((a, b) => b.value - a.value);
+
+  const getCategoryColors = () => {
+    return Object.keys(categoryCodes).map((category) => {
+      if (labels.includes(category)) {
+        return categoryCodes[category];
+      }
+      return null;
+    }).filter((color) => color !== null).reverse();
+  }
+
+  return (
+    <div className="stadistics" style={{ display: "flex" }}>
+      <PieChartDescriptions totalIncome={totalIncome} totalAmount={totalAmount} orderCategories={orderCategoriesForPieDescription} categoryCodes={categoryCodes} />
+      <PieChart labels={labels} data={values} colors={getCategoryColors()} />
+    </div>
+  );
+};
+
+const createLabelColors = (types) => {
+  const colors = {};
+  types.forEach(([category, color]) => {
+    if (!colors[category]) {
+      colors[category] = color;
+    }
+  });
+  return colors;
+};
+
+export default Stadistics;
