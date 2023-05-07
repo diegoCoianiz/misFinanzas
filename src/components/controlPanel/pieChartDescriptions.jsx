@@ -12,7 +12,7 @@ const PieChartDescriptions = ({ totalIncome, totalAmount, orderCategories, categ
       {orderCategories.map(({ label, value }, index) => (
         value > 0 ? (
           <p key={index} style={{ color: categoryCodes[label], margin: "0px", fontSize: "13px", alignItems: "start" }}>
-            {label}: {value}
+            {label}: {Math.floor(value)}
           </p>
         ) : null
       ))}
@@ -22,7 +22,7 @@ const PieChartDescriptions = ({ totalIncome, totalAmount, orderCategories, categ
       {orderCategories.reverse().map(({ label, value }, index) => (
         value < 0 && index < 8 ? (
           <p key={index} style={{ color: categoryCodes[label], margin: "0px", fontSize: "13px", alignItems: "start" }}>
-            {label.length > 8 ? `${label.slice(0, 8)}..: ${value}` : `${label}: ${value}`}
+            {label.length > 8 ? `${label.slice(0, 8)}..: ${Math.floor(value)}` : `${label}: ${Math.floor(value)}`}
           </p>
         ) : null
       ))}

@@ -26,12 +26,14 @@ body {
 
 .indexLeftSection {
   flex-direction: column;
-  width: 100%;
+  width: 49%;
 }
 
 .indexRightSection {
+  position: fixed;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
+  margin-left: 49.5%;
 }
 
 .indexRightSection form {
@@ -152,20 +154,17 @@ button {
   }
 
   .indexRightSection {
+    position: relative;
     order: 1;
-    width: 100%;
+    width: 102%;
     margin-bottom: 4%;
+    margin: 0;
+    margin-bottom: 10px;
   }
 
   .TransactionBox__notes {
     font-size: 13px;
-    margin-left: 5px;
-    margin-top: -15px;
-  }
-
-  .TransactionBox__amount {
-    min-width: 110px;
-
+    margin-top: -12px;
   }
 
   .newTransactionFormPage_transactionBox {
