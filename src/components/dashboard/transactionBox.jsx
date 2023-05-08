@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { incomeCategoryColors, expenseCategoryColors } from '@/data/categoryAndColors'
 
-const TransactionBox = ({ amount, date, category, type, notes, transaction_id }) => {
+const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }) => {
   const notesLength = 80
   let buttonColor = "";
   const createButtonColor = () => {

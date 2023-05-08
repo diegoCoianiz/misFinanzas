@@ -17,7 +17,7 @@ const PieChartDescriptions = ({ totalIncome, totalAmount, orderCategories, categ
         ) : null
       ))}
       <h1 style={{ textAlign: "start", marginBottom: "0px" }}>
-        gastos: ${totalAmount}
+        gastos: ${Math.floor(totalAmount)}
       </h1>
       {orderCategories.reverse().map(({ label, value }, index) => (
         value < 0 && index < 8 ? (

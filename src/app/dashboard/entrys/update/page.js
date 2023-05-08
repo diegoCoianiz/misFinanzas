@@ -119,7 +119,7 @@ const UpdateTransaction = ({ searchParams }) => {
         </label>
 
 
-        <input type='submit' style={{ width: '100%', height: '60px', backgroundColor: '#09af20' }} value={"Añadir"} />
+        <input type='submit' style={{ width: '100%', height: '60px', backgroundColor: '#09af20' }} value={"Modificar"} />
       </form>
       { }
       <div className='newTransactionFormPage_transactionBox'>

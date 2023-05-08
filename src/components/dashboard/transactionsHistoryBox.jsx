@@ -83,8 +83,8 @@ const TransactionsHistoryBox = ({ transactions }) => {
       if (newGroupedTransactions[date].categoryArray.filter((c) => c === category).length > 1) {
         newGroupedTransactions[date].duplicatedCategories = true;
         newGroupedTransactions[date].categoriesToUnify.push(category);
-        setGroupedTransactions(newGroupedTransactions);
       }
+      setGroupedTransactions(newGroupedTransactions);
     });
   }, [transactions]);
 
@@ -96,14 +96,17 @@ const TransactionsHistoryBox = ({ transactions }) => {
           const index = num + transactionsPageView * 10
           const transactionDate = transaction.createdAt.slice(0, 10);
           const isLastTransactionForDay =
-            groupedTransactions[transactionDate]?.firstTransactionIndex === index;
+          groupedTransactions[transactionDate]?.firstTransactionIndex === index;
           if (isLastTransactionForDay) {
 
             return (
               <div key={`total-${transactionDate}`}>
                 {/* GASTOS DEL DÍA + BOTON DE UNIFICAR */}
                 <div style={{ margin: "10px", display: "flex", paddingTop: "10px", justifyContent: "center", textAlign: "center", marginBottom: "10px" }}>
-                  <p style={{ margin: "0px" }}>Gastos del {transactionDate.slice(6, 10).split("-").reverse().join("/")}: ${groupedTransactions[transactionDate].total} </p>{groupedTransactions[transactionDate].duplicatedCategories ?
+                  <p style={{ margin: "0px" }}>Gastos del {transactionDate.slice(6, 10).split("-").reverse().join("/")}: $
+                  {groupedTransactions[transactionDate].total} </p>
+                  
+                  {groupedTransactions[transactionDate].duplicatedCategories ?
                     (
                       <button style={{ padding: "10px", width: "85px", marginTop: "-11px", marginLeft: "10px", backgroundColor: unifyingButtonColor[`color_${index}`] }} onClick={() => { handleUnifySubmit(index) }}>Unificar</button>
                     ) : ""
