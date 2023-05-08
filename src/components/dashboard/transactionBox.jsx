@@ -60,7 +60,7 @@ const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }
 
   return (
     <div style={type === 'egreso' ? { ...styles.box, backgroundColor: 'rgb(131 25 25)', boxShadow: "2px 2px 2px #1E9EA8" } : { ...styles.box, backgroundColor: 'rgb(0 129 37)', boxShadow: "2px 2px 2px  #FFBA08" }}>
-      <div style={{ minWidth: "90%" }}>
+      <div style={{ width: "90%" }}>
         <div style={styles.date}>
 
           <div style={{ display: "flex", flexDirection: "row", }}>

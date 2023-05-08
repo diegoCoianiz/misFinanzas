@@ -31,7 +31,7 @@ export default function dashboard({ searchParams }) {
           </div>
           <TransactionsHistoryBox transactions={transactions}/>
         </div>
-        <div className='indexRightSection' style={{ marginTop: "-15px" }}>
+        <div className='indexRightSection dashboardRightSection' style={{ marginTop: "-15px" }}>
           <ControlPanel transactions={transactions}/>
         </div>
       </div >

@@ -21,7 +21,7 @@ export default async function handler({ method, body: { transactionIds } }, res)
         const createdAtTimes = transactions.map(transaction => {
           const createdAtDate = new Date(transaction.createdAt);
           const createdAtTime = `${createdAtDate.getHours().toString().padStart(2, '0')}:${createdAtDate.getMinutes().toString().padStart(2, '0')}`;
-          newNote += `//${createdAtTime}hs// ${transaction.notes} `;
+          newNote += `//${createdAtTime}hs// ${transaction.notes} - $${transaction.amount} `;
         });
 
         const amount = transactions.reduce((total, transaction) => total + transaction.amount, 0);

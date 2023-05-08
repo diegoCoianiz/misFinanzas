@@ -108,6 +108,9 @@ const Index = () => {
               <Image src="https://cdn-icons-png.flaticon.com/512/4315/4315005.png" width={50} height={50} alt={"MongDB"} style={{ marginTop: "10px" }} />
               <h1 style={{ fontSize: "30px" }}>MongoDB</h1>
             </div>
+            <div style={{ display: "flex", margin: "0px 20px" }}>
+              <Image src="/next.svg" width={160} height={50} alt={"Next.js"} style={{ marginTop: "10px", background: "white" }} />
+            </div>
           </div>
         </div>
       </footer>

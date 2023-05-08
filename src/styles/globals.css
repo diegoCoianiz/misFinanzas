@@ -30,10 +30,15 @@ body {
 }
 
 .indexRightSection {
-  position: fixed;
   flex-direction: column;
   width: 50%;
-  margin-left: 49.5%;
+}
+
+.dashboardRightSection {
+  position: fixed;
+  width: 49%;
+  margin-left: 50%;
+  
 }
 
 .indexRightSection form {
@@ -58,12 +63,11 @@ button {
 }
 
 .TransactionBox__amount {
-  min-width: 140px;
   font-size: 35px;
   text-align: left;
   margin-top: -15px;
   margin-left: -5px;
-  margin-right: 0px;
+  margin-right: 3px;
 }
 
 .newTransactionFormPage_transactionBox {
