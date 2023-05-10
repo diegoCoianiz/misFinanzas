@@ -1,6 +1,9 @@
 import React from 'react'
-import Carousel from '../carousel'
+import Carousel from '../basics/carousel'
 import Stadistics from './stadistics'
+import Reports from './reports'
+import CalendarChart from './calendarChart'
+
 
 
 const ControlPanel = ({transactions}) => {
@@ -13,9 +16,12 @@ const ControlPanel = ({transactions}) => {
                         <Stadistics chart={transactions} />
 
                     </div>
-                    <p>
-                        ""
-                    </p>
+                    <div>
+                        <CalendarChart info={transactions} />
+                    </div>
+                    <div>
+                        <Reports info={transactions}/>
+                    </div>
                 </Carousel>
             </div>
         </div>

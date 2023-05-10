@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback } from "react";
-import PieChart from "../pieChart";
+import PieChart from "../basics/pieChart";
 import { incomeCategoryColors, expenseCategoryColors, capitalAbailable } from "@/data/categoryAndColors";
 import PieChartDescriptions from "./pieChartDescriptions";
 

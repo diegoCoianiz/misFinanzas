@@ -1,0 +1,12 @@
+.calendarDays {
+    width: 6rem;
+    height: 1.6rem;
+    border: 1px solid aliceblue;
+}
+
+/* CEL: 375px */
+@media screen and (max-width: 650px) {
+    .calendar {
+        width: 3rem;
+    }
+}
