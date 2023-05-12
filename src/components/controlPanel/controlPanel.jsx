@@ -2,11 +2,12 @@ import React from 'react'
 import Carousel from '../basics/carousel'
 import Stadistics from './stadistics'
 import Reports from './reports'
-import CalendarChart from './calendarChart'
+import Calendar from '../basics/calendar'
+import { useState, useEffect } from 'react'
 
 
+const ControlPanel = ({transactions, groupedTransactions}) => {
 
-const ControlPanel = ({transactions}) => {
     return (
         <div>
             <h1 style={{ textAlign: "start" }}>{"<"} Panel de control: {">"}</h1>
@@ -17,7 +18,7 @@ const ControlPanel = ({transactions}) => {
 
                     </div>
                     <div>
-                        <CalendarChart info={transactions} />
+                        <Calendar info={groupedTransactions} />
                     </div>
                     <div>
                         <Reports info={transactions}/>

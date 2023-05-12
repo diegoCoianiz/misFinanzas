@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import stylesCss from "../../styles/calendar.module.css"
 
 
-const Calendar = ({info}) => {
+const Calendar = ({ info }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const daysOfWeek = ["D", "L", "M", "M", "J", "V", "S"];
-  const monthsOfYear = [    "Enero",    "Febrero",    "Marzo",    "Abril",    "Mayo",    "Junio",    "Julio",    "Agosto",    "Septiembre",    "Octubre",    "Noviembre",    "Diciembre",  ];
+  const monthsOfYear = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",];
+  const thisMonth = new Date().getMonth()
+  const thisYear = new Date().getFullYear()
 
   function getDaysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
@@ -14,6 +16,13 @@ const Calendar = ({info}) => {
 
   function getFirstDayOfMonth(year, month) {
     return new Date(year, month, 1).getDay();
+  }
+
+  function getFirstMonthOfTheTransactionsArray() {
+    return new Date(Object.keys(info)[Object.keys(info).length - 1]).getMonth()
+  }
+  function getFirstYearOfTheTransactionsArray() {
+    return new Date(Object.keys(info)[Object.keys(info).length - 1]).getFullYear()
   }
 
   function handlePreviousMonth() {
@@ -50,35 +59,54 @@ const Calendar = ({info}) => {
     calendarRows.push(calendarDays.splice(0, 7));
   }
 
-  const styles  = {
+  const styles = {
     button: {
-      margin:"0px", 
-      height:"30px",
-      // cursor:"pointer"
+      margin: "0px",
+      height: "25px",
+      color: "rgb(131, 25, 25)",
+      maxWidth: "50%"
+    },
+    calendarDays(day) {
+      const thisDay = day === selectedDate.getDate() && selectedDate.getMonth() === thisMonth && selectedDate.getFullYear() === thisYear
+      return {
+        fontWeight: thisDay ? "bold" : "normal", 
+        color: thisDay  ? "#00ffb8" : "", 
+        cursor: "pointer", 
+        border: thisDay ? "2px solid #00ffb8" : ""
+      }
     }
   }
 
   return (
-    <div>
-      <h2 style={{margin:"0px"}}>{monthsOfYear[selectedDate.getMonth()]} {selectedDate.getFullYear()}</h2>
-      <div style={{display: "flex"}}>
-        <button style={styles.button} onClick={handlePreviousMonth}> {"<"} </button>
+    <div >
+      <h2 style={{ margin: "0px" }}>{monthsOfYear[selectedDate.getMonth()]} {selectedDate.getFullYear()}</h2>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        {(selectedDate.getMonth() > getFirstMonthOfTheTransactionsArray() && selectedDate.getFullYear() >= getFirstYearOfTheTransactionsArray()) || selectedDate.getFullYear() > getFirstYearOfTheTransactionsArray()  ? ( 
+          <button style={styles.button} onClick={handlePreviousMonth}> {"<"} </button> ) :( "" 
+        )}
         <button style={styles.button} onClick={handleNextMonth}> {">"} </button>
       </div>
       <table>
         <thead>
           <tr>
             {daysOfWeek.map((day, id) => (
-              <th key={id}>{day}</th>
+              <th key={id} style={{ color: "#00ffb8" }}>{day}</th>
             ))}
-          </tr> 
+          </tr>
         </thead>
         <tbody>
           {calendarRows.map((week, id) => (
             <tr key={`${week}+${id}`}>
-              {week.map((day,id) => (
-                <td key={`${day}+${id}`} className={stylesCss.calendarDays} style={{ fontWeight: day === selectedDate.getDate() ? "bold" : "normal", cursor: day === selectedDate.getDate() ? "" : "pointer", }}>
-                  {day}
+              {week.map((day, id) => (
+                <td key={`${day}+${id}`} className={stylesCss.calendarDays} style={styles.calendarDays(day)}>
+                  <div className={stylesCss.calendarDaysNumber}>
+                    {day}
+                  </div>
+                  <div className={stylesCss.calendarDaysData}>
+                    {info[`${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${day < 10 ? "0" + day : day}`]?.total || ".."}
+
+                  </div>
+
                 </td>
               ))}
             </tr>

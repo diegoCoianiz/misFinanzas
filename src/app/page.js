@@ -29,7 +29,7 @@ const Index = () => {
       body: JSON.stringify(userForm)
     }).then(res => { if (res.ok) return res.json() }
     ).then(data => {
-      console.log(data._check, data._id)
+      // console.log(data._check, data._id)
       if (data._check) router.push(`/dashboard?id=${data.id}`)
     })
   }
@@ -101,15 +101,14 @@ const Index = () => {
 
             <Image src="https://cdn-icons-png.flaticon.com/512/919/919825.png" width={60} height={60} alt={"nodejs"} style={{ margin: "0px 20px" }} />
             <div style={{ display: "flex", margin: "0px 20px" }}>
-              <Image src="https://cdn-icons-png.flaticon.com/512/649/649769.png" width={50} height={50} alt={"vercel"} style={{ marginTop: "10px" }} />
-              <h1 style={{ fontSize: "30px" }}>Vercel</h1>
+              <Image src="/vercel.svg" width={160} height={50} alt={"Next.js"} style={{ marginTop: "10px", background: "white", padding: "0px 5px" }} />
             </div>
             <div style={{ display: "flex", margin: "0px 20px" }}>
               <Image src="https://cdn-icons-png.flaticon.com/512/4315/4315005.png" width={50} height={50} alt={"MongDB"} style={{ marginTop: "10px" }} />
               <h1 style={{ fontSize: "30px" }}>MongoDB</h1>
             </div>
             <div style={{ display: "flex", margin: "0px 20px" }}>
-              <Image src="/next.svg" width={160} height={50} alt={"Next.js"} style={{ marginTop: "10px", background: "white" }} />
+              <Image src="/next.svg" width={160} height={50} alt={"Next.js"} style={{ marginTop: "10px", background: "white", padding: "0px 2px" }} />
             </div>
           </div>
         </div>

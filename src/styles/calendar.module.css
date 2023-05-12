@@ -4,9 +4,34 @@
     border: 1px solid aliceblue;
 }
 
+.calendarDaysNumber {
+     margin-top: -14px;
+    margin-left: -75px;
+    font-size: 12px;
+}
+
+.calendarDaysData {
+    margin-top: -8px;
+    margin-bottom: -15px;
+}
+
 /* CEL: 375px */
 @media screen and (max-width: 650px) {
-    .calendar {
+    /* .calendar {
         width: 3rem;
+    } */
+    .calendar {
+        margin-left: 0px;
+        padding: 0px 1px;
+    }
+
+    .calendarDaysNumber {
+        margin-top: -2px;
+       margin-left: -28px;
+   }
+   .calendarDaysData {
+    margin-top: 1px;
+    margin-bottom: -2px;
+    font-size: 15px;
     }
 }

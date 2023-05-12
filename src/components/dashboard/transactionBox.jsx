@@ -72,7 +72,7 @@ const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }
           </p>
         </div>
         <div style={{ display: 'flex' }}>
-          <h1 className='TransactionBox__amount'> {type === 'egreso' ? '-' : '+'}${amount}</h1>
+          <h1 className='TransactionBox__amount'> {type === 'egreso' ? '-' : '+'}${amount.toFixed(1)}</h1>
           <div style={{marginTop:"-2px", width:"100%"}}>
           <p className='TransactionBox__notes' >{notes.length < notesLength ? notes : notes.slice(0, notesLength)+"..."}</p>
           </div>

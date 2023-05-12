@@ -1,14 +1,13 @@
 import React from 'react'
 import TransactionBox from "@/components/dashboard/transactionBox";
-import { useState, useEffect } from 'react';
+import { useState, } from 'react';
 
-const TransactionsHistoryBox = ({ transactions }) => {
+const TransactionsHistoryBox = ({ transactions, groupedTransactions }) => {
   const [transactionsPageView, setTransactionsPageView] = useState(0);
   const totalOfPages = Math.floor((transactions.length - 1) / 10);
   const [unifyingButtonColor, setUnifyingButtonColor] = useState({});
   const [allowedIds, setAllowedIds] = useState(["", "", []]);
   const [allowedUnifyingButton, setAllowedUnifyingButton] = useState();
-  const [groupedTransactions, setGroupedTransactions] = useState({});
 
   const handleUnifySubmit = (index) => {
     if (allowedIds[2].length > 1 && index === allowedUnifyingButton) {
@@ -51,42 +50,6 @@ const TransactionsHistoryBox = ({ transactions }) => {
       }
     }
   };
-
-  useEffect(() => {
-    const newGroupedTransactions = {};
-    transactions.forEach((transaction, index) => {
-      const date = transaction.createdAt.slice(0, 10);
-
-      if (!newGroupedTransactions[date]) {
-        newGroupedTransactions[date] = {
-          total: 0,
-          firstTransactionIndex: index,
-          categoryArray: [],
-          duplicatedCategories: false,
-          transactionIDstoUnify: [],
-          categoriesToUnify: [],
-        };
-
-        setUnifyingButtonColor(prevState => ({
-          ...prevState,
-          [`color_${index}`]: "#88a17a"
-        }));
-      }
-      newGroupedTransactions[date].transactionIDstoUnify.push(transaction._id);
-      if (transaction.type === "egreso") {
-        newGroupedTransactions[date].total += transaction.amount;
-      }
-
-      const category = transaction.category;
-      newGroupedTransactions[date].categoryArray.push(category);
-
-      if (newGroupedTransactions[date].categoryArray.filter((c) => c === category).length > 1) {
-        newGroupedTransactions[date].duplicatedCategories = true;
-        newGroupedTransactions[date].categoriesToUnify.push(category);
-      }
-      setGroupedTransactions(newGroupedTransactions);
-    });
-  }, [transactions]);
 
   return (
     <>
