@@ -13,7 +13,7 @@ const NewAmount = ({ searchParams }) => {
 
   const router = useRouter()
   const [userNewAmount, setUserNewAmount] = useState({
-    amount: '',
+    amount: 0.0,
     notes: '',
     category: 'Alimentación',
     type: 'egreso',
