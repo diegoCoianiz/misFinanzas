@@ -3,8 +3,6 @@ import Carousel from '../basics/carousel'
 import Stadistics from './stadistics'
 import Reports from './reports'
 import Calendar from '../basics/calendar'
-import { useState, useEffect } from 'react'
-
 
 const ControlPanel = ({transactions, groupedTransactions}) => {
 
