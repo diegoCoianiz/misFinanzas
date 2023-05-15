@@ -4,10 +4,10 @@ const PieChartDescriptions = ({ totalIncome, totalAmount, orderCategories, categ
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
       <h1 style={{ textAlign: "start", margin: "0px" }}>
-        capital: ${Math.round((totalIncome - totalAmount)*10)/10}
+        Capital: ${Math.round((totalIncome - totalAmount)*10)/10}
       </h1>
       <p style={{ textAlign: "start", margin: "0px", fontSize:"14px" }}>
-        ingresos: ${totalIncome}
+        Ingresos: ${totalIncome}
       </p>
       {orderCategories.map(({ label, value }, index) => (
         value > 0 ? (
@@ -17,7 +17,7 @@ const PieChartDescriptions = ({ totalIncome, totalAmount, orderCategories, categ
         ) : null
       ))}
       <h1 style={{ textAlign: "start", marginBottom: "0px" }}>
-        gastos: $${Math.round(totalAmount * 10) / 10}
+        Gastos: $${Math.round(totalAmount * 10) / 10}
       </h1>
       {orderCategories.reverse().map(({ label, value }, index) => (
         value < 0 && index < 8 ? (

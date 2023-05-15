@@ -7,8 +7,8 @@ import Calendar from '../basics/calendar'
 const ControlPanel = ({transactions, groupedTransactions}) => {
 
     return (
-        <div>
-            <h1 style={{ textAlign: "start" }}>{"<"} Panel de control: {">"}</h1>
+        <div >
+            <h1 style={{ textAlign: "start", margin:"10px" }}>{"<"} Panel de control: {">"}</h1>
             <div className="dashboardCarousel">
                 <Carousel timeCondition={false}>
                     <div>
@@ -16,7 +16,7 @@ const ControlPanel = ({transactions, groupedTransactions}) => {
 
                     </div>
                     <div>
-                        <Calendar info={groupedTransactions} />
+                        <Calendar groupedTransactions={groupedTransactions} />
                     </div>
                     <div>
                         <Reports info={transactions}/>

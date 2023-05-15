@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import stylesCss from "../../styles/calendar.module.css"
+import Link from "next/link";
 
 
-const Calendar = ({ info }) => {
+const Calendar = ({ groupedTransactions }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const daysOfWeek = ["D", "L", "M", "M", "J", "V", "S"];
@@ -19,10 +21,10 @@ const Calendar = ({ info }) => {
   }
 
   function getFirstMonthOfTheTransactionsArray() {
-    return new Date(Object.keys(info)[Object.keys(info).length - 1]).getMonth()
+    return new Date(Object.keys(groupedTransactions)[Object.keys(groupedTransactions).length - 1]).getMonth()
   }
   function getFirstYearOfTheTransactionsArray() {
-    return new Date(Object.keys(info)[Object.keys(info).length - 1]).getFullYear()
+    return new Date(Object.keys(groupedTransactions)[Object.keys(groupedTransactions).length - 1]).getFullYear()
   }
 
   function handlePreviousMonth() {
@@ -69,9 +71,9 @@ const Calendar = ({ info }) => {
     calendarDays(day) {
       const thisDay = day === selectedDate.getDate() && selectedDate.getMonth() === thisMonth && selectedDate.getFullYear() === thisYear
       return {
-        fontWeight: thisDay ? "bold" : "normal", 
-        color: thisDay  ? "#00ffb8" : "", 
-        cursor: "pointer", 
+        fontWeight: thisDay ? "bold" : "normal",
+        color: thisDay ? "#00ffb8" : "",
+        cursor: "pointer",
         border: thisDay ? "2px solid #00ffb8" : ""
       }
     }
@@ -79,12 +81,20 @@ const Calendar = ({ info }) => {
 
   return (
     <div >
-      <h2 style={{ margin: "0px" }}>{monthsOfYear[selectedDate.getMonth()]} {selectedDate.getFullYear()}</h2>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        {(selectedDate.getMonth() > getFirstMonthOfTheTransactionsArray() && selectedDate.getFullYear() >= getFirstYearOfTheTransactionsArray()) || selectedDate.getFullYear() > getFirstYearOfTheTransactionsArray()  ? ( 
-          <button style={styles.button} onClick={handlePreviousMonth}> {"<"} </button> ) :( "" 
-        )}
-        <button style={styles.button} onClick={handleNextMonth}> {">"} </button>
+      <div style={{ display: "flex", justifyContent: "start", gap: "2", marginBottom: "-2px" }}>
+        <div style={{ width: "65%", marginRight: "10%" }}>
+          <h2 style={{ margin: "0px" }}>{monthsOfYear[selectedDate.getMonth()]} {selectedDate.getFullYear()}</h2>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            {(selectedDate.getMonth() > getFirstMonthOfTheTransactionsArray() && selectedDate.getFullYear() >= getFirstYearOfTheTransactionsArray()) || selectedDate.getFullYear() > getFirstYearOfTheTransactionsArray() ? (
+              <button style={styles.button} onClick={handlePreviousMonth}> {"<"} </button>) : (""
+            )}
+            <button style={styles.button} onClick={handleNextMonth}> {">"} </button>
+          </div>
+        </div>
+        {/* <Link href={"/"} style={{ display: "flex", textDecoration: "none", color: "white" }}>
+          <Image src={"https://cdn-icons-png.flaticon.com/512/784/784856.png"} alt={"notes"} width={45} height={45} />
+          <p style={{ margin: "0px", marginTop: "25px" }}>50</p>
+        </Link> */}
       </div>
       <table>
         <thead>
@@ -98,16 +108,21 @@ const Calendar = ({ info }) => {
           {calendarRows.map((week, id) => (
             <tr key={`${week}+${id}`}>
               {week.map((day, id) => (
-                <td key={`${day}+${id}`} className={stylesCss.calendarDays} style={styles.calendarDays(day)}>
-                  <div className={stylesCss.calendarDaysNumber}>
-                    {day}
-                  </div>
-                  <div className={stylesCss.calendarDaysData}>
-                    {info[`${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${day < 10 ? "0" + day : day}`]?.total || ".."}
-
-                  </div>
-
-                </td>
+                day < 1 ? (
+                  <td key={`${day}+${id}`}></td>
+                ) :
+                  (
+                    <td key={`${day}+${id}`} className={stylesCss.calendarDays} style={styles.calendarDays(day)} >
+                      <Link href={`/events?selection=${day}/${selectedDate.getMonth() + 1}/${selectedDate.getFullYear()}`} style={{textDecoration:"none", color:"white"}}>
+                        <div className={stylesCss.calendarDaysNumber}>
+                          {day}
+                        </div>
+                        <div className={stylesCss.calendarDaysData}>
+                          {groupedTransactions[`${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${day < 10 ? "0" + day : day}`]?.total || <br></br>}
+                        </div>
+                      </Link>
+                    </td>
+                  )
               ))}
             </tr>
           ))}

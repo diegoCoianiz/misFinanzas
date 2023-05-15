@@ -8,7 +8,8 @@ body {
   max-width: 100vw;
   text-align: center;
   color: aliceblue;
-  background-image: radial-gradient(circle, #000000, #0f0003, #190004, #210003, #270000);
+  /* background-image: radial-gradient(circle, #000000, #0f0003, #190004, #210003, #270000); */
+  background-color: #121212;
 }
 
 .indexBody {
@@ -129,7 +130,7 @@ button {
   }
 }
 
-/* CEL: 375px */
+/* CEL: 375px & 397px */
 @media screen and (max-width: 650px) {
   * {
     font-family: 'Times New Roman', Times, serif;
