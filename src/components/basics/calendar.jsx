@@ -69,17 +69,18 @@ const Calendar = ({ groupedTransactions, userId, events }) => {
       maxWidth: "50%"
     },
     calendarDays(day) {
-      const thisDay = day === selectedDate.getDate() && selectedDate.getMonth() === thisMonth && selectedDate.getFullYear() === thisYear;
-      const isEventDay = eventDates.includes(new Date(selectedDate.getFullYear(), selectedDate.getMonth(), day + 1).toISOString());
+      const currentDate = new Date();
+      const thisDay = day === currentDate.getUTCDate() && selectedDate.getUTCMonth() === thisMonth && selectedDate.getUTCFullYear() === thisYear;
+      const isEventDay = eventDates.includes(new Date(Date.UTC(selectedDate.getUTCFullYear(), selectedDate.getUTCMonth(), day + 1)).toISOString());
     
       return {
         fontWeight: isEventDay || thisDay ? "bold" : "normal",
         color: isEventDay ? "rgb(255 94 0)" : thisDay ? "#00ffb8" : "white",
-        // backgroundColor: isEventDay ? "yellow" : "",
         cursor: "pointer",
         border: isEventDay ? "2px solid rgb(255 178 36)" : thisDay ? "2px solid #00ffb8" : ""
       };
     }
+    
     
   }
 
