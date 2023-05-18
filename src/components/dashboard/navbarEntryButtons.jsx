@@ -1,18 +1,16 @@
 import React from 'react'
 import EntryButton from './entryButton'
 
-const DashboardEntryButtonsNavBar = ({ userId }) => {
-
+const DashboardEntryButtonsNavBar = ({ userId, events }) => {
     const newSize = 10
-
     return (
         <>
             {
                 buttons.map((button, key) => {
                     return (
                         <div key={key} style={{ display: "flex", flexDirection: "column", margin: "0px 10px",  }}>
-                            <EntryButton img={button.img} alt={button.alt} width={button.width + newSize} height={button.height + newSize} userId={userId} />
-                            <h6 style={{ marginTop: "0px" }}>{button.text}</h6>
+                            <EntryButton img={button.img} alt={button.alt} width={button.width + newSize} height={button.height + newSize} userId={userId} eventsLength={ button.alt === "/events" ? events.length : undefined} />
+                            <h6 style={{ marginTop: "0px" }}>{button.text} { button.alt === "/events" ? `(${events.length})` : undefined} </h6>
                         </div>
                     )
                 }
@@ -27,14 +25,14 @@ export default DashboardEntryButtonsNavBar
 const buttons = [
     {
         img: "https://cdn-icons-png.flaticon.com/512/1004/1004759.png",
-        alt: "new",
+        alt: "/dashboard/entrys/new",
         width: 45,
         height: 45,
         text: "Nuevo"
     },
     {
         img: "https://cdn-icons-png.flaticon.com/512/784/784856.png",
-        alt: "events",
+         alt: "/events",
         width: 35,
         height: 42,
         text: "Eventos"

@@ -2,11 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const EntryButton = ({ img, alt, width = 45, height = 52, userId }) => {
+const EntryButton = ({ img, alt, width = 45, height = 52, userId, }) => {
     return (
         <>
             <h6 style={styles.button}>
-                <Link href={`/dashboard/entrys/${alt}?id=${userId}`}>
+                <Link href={`${alt}?id=${userId}`}>
                     <Image src={img} alt={alt} width={width} height={height}/>
                 </Link>
             </h6>

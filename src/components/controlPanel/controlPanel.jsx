@@ -4,7 +4,7 @@ import Stadistics from './stadistics'
 import Reports from './reports'
 import Calendar from '../basics/calendar'
 
-const ControlPanel = ({transactions, groupedTransactions}) => {
+const ControlPanel = ({transactions, groupedTransactions, userId, events}) => {
 
     return (
         <div >
@@ -16,7 +16,7 @@ const ControlPanel = ({transactions, groupedTransactions}) => {
 
                     </div>
                     <div>
-                        <Calendar groupedTransactions={groupedTransactions} />
+                        <Calendar groupedTransactions={groupedTransactions} userId={userId} events={events}/>
                     </div>
                     <div>
                         <Reports info={transactions}/>

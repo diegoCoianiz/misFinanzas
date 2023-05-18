@@ -37,7 +37,7 @@ const Reports = ({ info }) => {
   const getAverageExpensesInMonthWithNoRent = () => {
     const numExpenses = relevantTransactions.length;
     const totalRelevantExpenses = relevantTransactions.reduce((acc, cur) => acc + cur.amount, 0);
-    const totalTravelExpenses = travelTransactions.reduce((acc, cur) => acc + cur.amount, 0)
+    // const totalTravelExpenses = travelTransactions.reduce((acc, cur) => acc + cur.amount, 0)
     const averageExpenses = totalRelevantExpenses / numExpenses;
     const capital = totalOfCapital.reduce((acc, cur) => {
       const amount = parseFloat(cur.amount);

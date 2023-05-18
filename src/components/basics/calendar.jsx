@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import stylesCss from "../../styles/calendar.module.css"
 import Link from "next/link";
 
 
-const Calendar = ({ groupedTransactions }) => {
+const Calendar = ({ groupedTransactions, userId, events }) => {
+  const eventDates = events.map(event => event.start);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const daysOfWeek = ["D", "L", "M", "M", "J", "V", "S"];
@@ -69,14 +69,18 @@ const Calendar = ({ groupedTransactions }) => {
       maxWidth: "50%"
     },
     calendarDays(day) {
-      const thisDay = day === selectedDate.getDate() && selectedDate.getMonth() === thisMonth && selectedDate.getFullYear() === thisYear
+      const thisDay = day === selectedDate.getDate() && selectedDate.getMonth() === thisMonth && selectedDate.getFullYear() === thisYear;
+      const isEventDay = eventDates.includes(new Date(selectedDate.getFullYear(), selectedDate.getMonth(), day + 1).toISOString());
+    
       return {
-        fontWeight: thisDay ? "bold" : "normal",
-        color: thisDay ? "#00ffb8" : "",
+        fontWeight: isEventDay || thisDay ? "bold" : "normal",
+        color: isEventDay ? "rgb(255 94 0)" : thisDay ? "#00ffb8" : "white",
+        // backgroundColor: isEventDay ? "yellow" : "",
         cursor: "pointer",
-        border: thisDay ? "2px solid #00ffb8" : ""
-      }
+        border: isEventDay ? "2px solid rgb(255 178 36)" : thisDay ? "2px solid #00ffb8" : ""
+      };
     }
+    
   }
 
   return (
@@ -91,10 +95,6 @@ const Calendar = ({ groupedTransactions }) => {
             <button style={styles.button} onClick={handleNextMonth}> {">"} </button>
           </div>
         </div>
-        {/* <Link href={"/"} style={{ display: "flex", textDecoration: "none", color: "white" }}>
-          <Image src={"https://cdn-icons-png.flaticon.com/512/784/784856.png"} alt={"notes"} width={45} height={45} />
-          <p style={{ margin: "0px", marginTop: "25px" }}>50</p>
-        </Link> */}
       </div>
       <table>
         <thead>
@@ -113,7 +113,7 @@ const Calendar = ({ groupedTransactions }) => {
                 ) :
                   (
                     <td key={`${day}+${id}`} className={stylesCss.calendarDays} style={styles.calendarDays(day)} >
-                      <Link href={`/events?selection=${day}/${selectedDate.getMonth() + 1}/${selectedDate.getFullYear()}`} style={{textDecoration:"none", color:"white"}}>
+                      <Link href={`/dashboard/entrys/events?id=${userId}&selection=${day}/${selectedDate.getMonth() + 1}/${selectedDate.getFullYear()}`} style={{textDecoration:"none", color:styles.calendarDays(day).color}}>
                         <div className={stylesCss.calendarDaysNumber}>
                           {day}
                         </div>
