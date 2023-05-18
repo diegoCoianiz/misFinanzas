@@ -4,7 +4,18 @@ import Link from "next/link";
 
 
 const Calendar = ({ groupedTransactions, userId, events }) => {
-  const eventDates = events.map(event => event.start);
+  const eventDates = events.map(event => {
+    if (event.until) {
+      return {
+        start: event.start,
+        until: event.until
+      };
+    } else {
+      return {
+        start: event.start
+      };
+    }
+  });
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const daysOfWeek = ["D", "L", "M", "M", "J", "V", "S"];
@@ -68,11 +79,9 @@ const Calendar = ({ groupedTransactions, userId, events }) => {
       color: "rgb(131, 25, 25)",
       maxWidth: "50%"
     },
-    calendarDays(day) {
+    calendarDays(day, isEventDay) {
       const currentDate = new Date();
       const thisDay = day === currentDate.getUTCDate() && selectedDate.getUTCMonth() === thisMonth && selectedDate.getUTCFullYear() === thisYear;
-      const isEventDay = eventDates.includes(new Date(Date.UTC(selectedDate.getUTCFullYear(), selectedDate.getUTCMonth(), day + 1)).toISOString());
-    
       return {
         fontWeight: isEventDay || thisDay ? "bold" : "normal",
         color: isEventDay ? "rgb(255 94 0)" : thisDay ? "#00ffb8" : "white",
@@ -80,8 +89,8 @@ const Calendar = ({ groupedTransactions, userId, events }) => {
         border: isEventDay ? "2px solid rgb(255 178 36)" : thisDay ? "2px solid #00ffb8" : ""
       };
     }
-    
-    
+
+
   }
 
   return (
@@ -108,23 +117,42 @@ const Calendar = ({ groupedTransactions, userId, events }) => {
         <tbody>
           {calendarRows.map((week, id) => (
             <tr key={`${week}+${id}`}>
-              {week.map((day, id) => (
-                day < 1 ? (
+
+
+
+              {week.map((day, id) => {
+                
+                // Verificar si el día actual está dentro del rango de un evento en el mismo mes y año
+                const isInEventRange = eventDates.some(event => {
+                  const startDate = new Date(event.start);
+                  const untilDate = event.until ? new Date(event.until) : startDate;
+                  return (
+                    day >= startDate.getDate() &&
+                    day <= untilDate.getDate() &&
+                    selectedDate.getMonth() === startDate.getMonth() &&
+                    selectedDate.getFullYear() === startDate.getFullYear()
+                    );
+                  });
+                  const dayStyles = styles.calendarDays(day, isInEventRange);
+                  
+                return day < 1 ? (
                   <td key={`${day}+${id}`}></td>
-                ) :
-                  (
-                    <td key={`${day}+${id}`} className={stylesCss.calendarDays} style={styles.calendarDays(day)} >
-                      <Link href={`/dashboard/entrys/events?id=${userId}&selection=${day}/${selectedDate.getMonth() + 1}/${selectedDate.getFullYear()}`} style={{textDecoration:"none", color:styles.calendarDays(day).color}}>
-                        <div className={stylesCss.calendarDaysNumber}>
-                          {day}
-                        </div>
-                        <div className={stylesCss.calendarDaysData}>
-                          {groupedTransactions[`${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${day < 10 ? "0" + day : day}`]?.total || <br></br>}
-                        </div>
-                      </Link>
-                    </td>
-                  )
-              ))}
+                ) : (
+                  <td key={`${day}+${id}`} className={stylesCss.calendarDays} style={isInEventRange?dayStyles:dayStyles}>
+                    <Link href={`/dashboard/entrys/events?id=${userId}&selection=${day}/${selectedDate.getMonth() + 1}/${selectedDate.getFullYear()}`} style={{ textDecoration: "none", color: dayStyles.color }}>
+                      <div className={stylesCss.calendarDaysNumber}>
+                        {day}
+                      </div>
+                      <div className={stylesCss.calendarDaysData}>
+                        {groupedTransactions[`${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${day < 10 ? "0" + day : day}`]?.total || <br />}
+                      </div>
+                    </Link>
+                  </td>
+                );
+              })}
+
+
+
             </tr>
           ))}
         </tbody>
