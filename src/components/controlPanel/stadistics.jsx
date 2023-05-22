@@ -38,7 +38,7 @@ const Stadistics = ({ chart }) => {
       };
     }).filter((category) => {
       return category.label !== "Ingresos disponibles" && category.label !== "Capital disponible";
-    }).sort((a, b) => b.value - a.value);
+    }).sort((a, b) => b.value - a.value).reverse();
 
     const incomeCategories = incomeCategoryColors.map((category) => {
       return category[0]
@@ -62,13 +62,13 @@ const Stadistics = ({ chart }) => {
         return categoryCodes[category];
       }
       return null;
-    }).filter((color) => color !== null).reverse();
+    }).filter((color) => color !== null);
   }, [categoryCodes, labelsForPieChart]);
 
   return (
     <div className="stadistics" style={{ display: "flex" }}>
       <PieChartDescriptions totalIncome={totalIncome} totalAmount={totalAmount} orderCategories={orderCategoriesForPieDescription} categoryCodes={categoryCodes} />
-      <PieChart labels={labelsForPieChart} data={valuesForPieChart} colors={colors.reverse()} />
+      <PieChart labels={labelsForPieChart} data={valuesForPieChart} colors={colors} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import React from 'react'
 import { incomeCategoryColors, expenseCategoryColors } from '@/data/categoryAndColors'
 
 const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }) => {
-  const notesLength = 80
+  const notesLength = 90
   let buttonColor = "";
   const createButtonColor = () => {
     if (type === 'ingreso') buttonColor = incomeCategoryColors.filter(color => { return color[0] === category })[0]
@@ -21,7 +21,6 @@ const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }
 
   const handleDelete = (e) => {
     e.preventDefault();
-    console.log("se envia una solicitud DELETE a", `/api/transactions/${transaction_id}`)
     fetch(`/api/transactions?id=${transaction_id}`, {
       method: 'DELETE',
     })
@@ -32,31 +31,31 @@ const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }
         location.reload();
       })
       .catch(error => {
-        console.error('There was an error deleting the resource:', error);
+        // console.error('There was an error deleting the resource:', error);
       });
   }
 
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    fetch(`/api/transaction/${transaction_id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        myData: 'updated'
-      })
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-      })
-      .catch(error => {
-        null
-      });
-  }
+  // const handleUpdate = (e) => {
+  //   e.preventDefault();
+  //   fetch(`/api/transaction/${transaction_id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       myData: 'updated'
+  //     })
+  //   })
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       null
+  //     });
+  // }
 
   return (
     <div style={type === 'egreso' ? { ...styles.box, backgroundColor: 'rgb(131 25 25)', boxShadow: "2px 2px 2px #1E9EA8" } : { ...styles.box, backgroundColor: 'rgb(0 129 37)', boxShadow: "2px 2px 2px  #FFBA08" }}>
@@ -67,7 +66,7 @@ const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }
             <button style={type === 'egreso' ? { ...styles.colorButton, backgroundColor: buttonColor[1], boxShadow: "2px 2px 2px #1E9EA8" } : { ...styles.colorButton, backgroundColor: buttonColor[1], boxShadow: "2px 2px 2px #7B2F59" }}></button>
             <p style={{ margin: "0px 10px" }}>{"<"}{category}{">"}</p>
           </div>
-          <p style={{margin:"0px", fontSize:"13px"}}>
+          <p style={{margin:"0px", fontSize:"12px"}}>
           {desiredDate}hs
           </p>
         </div>

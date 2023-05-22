@@ -1,5 +1,6 @@
 * {
-  font-family: cursive;
+  /* font-family: cursive; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 17px;
 }
 
@@ -96,6 +97,13 @@ button {
   margin-top: 10px
 }
 
+.eventBox button{
+  color: aliceblue
+}
+.eventBox p{
+  margin: 0px;
+}
+
 @media screen and (min-width: 850px) {
   .newTransactionFormPage {
     margin: 0px 25%;
@@ -168,7 +176,7 @@ button {
   }
 
   .TransactionBox__notes {
-    font-size: 13px;
+    font-size: 13.5px;
     margin-top: -12px;
   }
 

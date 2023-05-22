@@ -3,12 +3,16 @@ import { useState, useEffect } from 'react';
 import DashboardEntryButtonsNavBar from "@/components/dashboard/navbarEntryButtons";
 import TransactionsHistoryBox from "@/components/dashboard/transactionsHistoryBox";
 import ControlPanel from "@/components/controlPanel/controlPanel";
+import EventsHistoryBox from '@/components/dashboard/eventsHistoryBox';
 
 export default function dashboard({ searchParams }) {
   // const [user, setUser] = useState("");
   const [transactions, setTransactions] = useState([]);
   const [events,  setEvents] = useState([]);
   const [groupedTransactions, setGroupedTransactions] = useState({});
+  const [showHistoryOf, setShowHistoryOf] = useState("transactions");
+
+  const handleUpdateShowHistoryOf = () => setShowHistoryOf(showHistoryOf === "transactions" ? "events" : "transactions");
 
   useEffect(() => {
     async function fetchData() {
@@ -65,9 +69,14 @@ export default function dashboard({ searchParams }) {
       <div className='indexBody dashboardBody' style={{ marginTop: "15px" }}>
         <div className='indexLeftSection' style={{ padding: "10px", paddingTop: "0px" }}>
           <div className="dashboardBodyNavBar">
-            <DashboardEntryButtonsNavBar userId={searchParams.id} events={events}/>
+            <DashboardEntryButtonsNavBar userId={searchParams.id} events={events} handleUpdateShowHistoryOf={handleUpdateShowHistoryOf} showHistoryOf={showHistoryOf} />
           </div>
-          <TransactionsHistoryBox transactions={transactions} groupedTransactions={groupedTransactions}/>
+          {showHistoryOf === "transactions" ?
+          <TransactionsHistoryBox transactions={transactions} groupedTransactions={groupedTransactions} />
+          :
+          <EventsHistoryBox events={events}/>
+            
+        }
         </div>
         <div className='indexRightSection dashboardRightSection' style={{ marginTop: "-15px" }}>
           <ControlPanel transactions={transactions} groupedTransactions={groupedTransactions} userId={searchParams.id} events={events}/>

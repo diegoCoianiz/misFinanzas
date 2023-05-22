@@ -59,7 +59,7 @@ const Register = () => {
 
     return (
         <>
-            <div className='indexBody' style={{ marginTop: "6%" }}>
+            <div className='indexBody' style={{ marginTop: "6%", width:"95%" }}>
                 <div className='indexLeftSection' style={{ padding: "10px" }}>
                     <div>
                         <h6 style={{ textAlign: "start", margin: "0px", marginBottom: "-18px", color: "yellow" }}>Mensaje del autor:</h6>
@@ -75,7 +75,7 @@ const Register = () => {
                         <input type='password' name='passwordAgain' placeholder='@ Repetir contraseña' onChange={handleChange} style={{ border: `${thePasswordBorder}` }} />
                         {thePasswordBorder === theUserNameBorder && theUserNameBorder === correctBorder ?
                             <button type='submit' style={{ cursor: "pointer", backgroundColor: "#09af20" }}>Registrar</button> :
-                            <p>Para llevar a cabo la solicitud, asegurate de que todos los casilleros estén marcardos en color verde. Para ello ingresa un nombre de usuario y contraseña con al menos cuatro caracteres</p>
+                            <p>Todos los casilleros deben estar marcardos en color verde. Ingresa un nombre de usuario y contraseña con al menos cuatro caracteres.</p>
                         }
                     </form>
                 </div>
