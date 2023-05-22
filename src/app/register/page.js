@@ -63,7 +63,7 @@ const Register = () => {
                 <div className='indexLeftSection' style={{ padding: "10px" }}>
                     <div>
                         <h6 style={{ textAlign: "start", margin: "0px", marginBottom: "-18px", color: "yellow" }}>Mensaje del autor:</h6>
-                        <p>'Mis Finanzas' ha sido diseñada pensando en la simplicidad y la intuitividad para el usuario. No solicitamos información innecesaria y no estamos interesados en obtener datos personales de nuestros usuarios. Nuestra única finalidad es hacer que la gestión de las finanzas personales sea más sencilla y accesible para todos. Queremos ayudar a las personas a tener un mayor control de sus gastos e ingresos, y permitirles tomar decisiones financieras más informadas. </p>
+                        <p>'digitalOrganizer' ha sido diseñada pensando en la simplicidad y la intuitividad para el usuario. No solicitamos información innecesaria y no estamos interesados en obtener datos personales de nuestros usuarios. Nuestra única finalidad es hacer que la gestión de las finanzas personales sea más sencilla y accesible para todos. Queremos ayudar a las personas a tener un mayor control de sus gastos e ingresos, y permitirles tomar decisiones financieras más informadas. </p>
                     </div>
                     <Image src={"https://cdn-icons-png.flaticon.com/512/7752/7752761.png"} alt={"logo"} width={180} height={180}/>
                 </div>

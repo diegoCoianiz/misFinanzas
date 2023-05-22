@@ -58,13 +58,13 @@ const Index = () => {
           </div>
 
           <div style={{ marginTop: '20px' }}>
-            <h2 style={{ textAlign: "center", marginBottom: "5px", color: "yellow" }}>¿Por qué elegir MisFinanzas?</h2>
-            <p style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>"MisFinanzas es la aplicación financiera independiente y gratuita que te ayuda a tomar el control de tus cuentas de manera efectiva. Nos enfocamos en las necesidades específicas de nuestros usuarios, implementando mejoras constantemente para hacer tu día a día más eficiente. En nuestra comunidad siempre buscamos crecer y superarnos"</p>
+            <h2 style={{ textAlign: "center", marginBottom: "5px", color: "yellow" }}>¿Por qué elegir digitalOrganizer?</h2>
+            <p style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>"digitalOrganizer es la aplicación financiera independiente y gratuita que te ayuda a tomar el control de tus cuentas de manera efectiva. Nos enfocamos en las necesidades específicas de nuestros usuarios, implementando mejoras constantemente para hacer tu día a día más eficiente. En nuestra comunidad siempre buscamos crecer y superarnos"</p>
           </div>
 
           <div style={{ marginTop: '-20px' }}>
             <h6 style={{ textAlign: "start", marginBottom: "-15px", color: "yellow" }}>Mensaje del autor:</h6>
-            <p>Hola! En MisFinanzas nos enfocamos en ti y en tus necesidades financieras. Queremos ayudarte a tomar el control de tus gastos diarios de manera efectiva y segura, para que puedas lograr tus metas y sueños. Únete a nuestra comunidad y descubre cómo podemos hacer que tus finanzas personales sean más fáciles y agradables.Te esperamos!</p>
+            <p>Hola! En digitalOrganizer nos enfocamos en ti y en tus necesidades financieras. Queremos ayudarte a tomar el control de tus gastos diarios de manera efectiva y segura, para que puedas lograr tus metas y sueños. Únete a nuestra comunidad y descubre cómo podemos hacer que tus finanzas personales sean más fáciles y agradables.Te esperamos!</p>
           </div>
         </section>
 
@@ -93,9 +93,9 @@ const Index = () => {
           <div>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "-20px" }}>
               <Image src="https://cdn-icons-png.flaticon.com/512/1060/1060678.png" width={50} height={50} alt={'logo'} />
-              <h1 style={{ fontSize: "30px", marginLeft: "15px" }}>MisFinanzas</h1>
+              <h1 style={{ fontSize: "30px", marginLeft: "15px" }}>digitalOrganizer</h1>
             </div>
-            <p style={{ fontSize: "12px", marginTop: "-25px", marginLeft: "85px" }}>utiliza las siguientes tecnologías:</p>
+            <p style={{ fontSize: "12px", marginTop: "-20px", marginLeft: "85px" }}>utiliza las siguientes tecnologías:</p>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginTop: "-10px", }}>
 

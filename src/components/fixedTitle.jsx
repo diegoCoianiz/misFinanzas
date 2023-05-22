@@ -7,7 +7,7 @@ const FixedTitle = () => {
         <Link href={'/'}>
             <div style={styles.fixed}>
                 <Image src="https://cdn-icons-png.flaticon.com/512/1060/1060678.png" width={50} height={50} alt={'logo'} />
-                <h1 style={{ fontSize: "30px", marginLeft: "15px" }}>MisFinanzas</h1>
+                <h1 style={{ fontSize: "30px", marginLeft: "15px" }}>digitalOrganizer</h1>
             </div>
         </Link>
     )

@@ -36,8 +36,8 @@ const EventBox = ({ _id, start, until, title, description, estimatedCost, recurr
       if (currentIndex === contentToRender.length - 1) {
         clearInterval(interval);
       }
-    }, 15); // Intervalo de tiempo entre cada letra (en milisegundos)
-
+    }, 20);
+    
     return () => {
       clearInterval(interval);
       setRenderedContent("");
