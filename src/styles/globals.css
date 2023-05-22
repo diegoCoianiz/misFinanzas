@@ -93,7 +93,7 @@ button {
   margin-top: -5%;
 }
 
-.silderButtonTime {
+.sliderButtonTime {
   margin-top: 10px
 }
 
@@ -104,6 +104,9 @@ button {
   margin: 0px;
 }
 
+.registerCarousel .activeSlideCarouselDiv {
+  height: 300px;
+}
 @media screen and (min-width: 850px) {
   .newTransactionFormPage {
     margin: 0px 25%;
@@ -197,7 +200,12 @@ button {
     height: 280px;
   }
 
-  .silderButtonTime {
+  .sliderButtonTime {
     margin-top: -10px
   }
+
+  .registerCarousel .activeSlideCarouselDiv {
+    height: 100%;
+  }
+
 }

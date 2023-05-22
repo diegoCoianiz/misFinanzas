@@ -1,7 +1,8 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+import Carousel from '@/components/basics/carousel'
+import CarouselBox from '@/components/carouselBox'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
@@ -59,17 +60,24 @@ const Register = () => {
 
     return (
         <>
-            <div className='indexBody' style={{ marginTop: "6%", width:"95%" }}>
+            <div className='indexBody' style={{ marginTop: "6%", width: "95%" }}>
                 <div className='indexLeftSection' style={{ padding: "10px" }}>
                     <div>
                         <h6 style={{ textAlign: "start", margin: "0px", marginBottom: "-18px", color: "yellow" }}>Mensaje del autor:</h6>
-                        <p>'digitalOrganizer' ha sido diseñada pensando en la simplicidad y la intuitividad para el usuario. No solicitamos información innecesaria y no estamos interesados en obtener datos personales de nuestros usuarios. Nuestra única finalidad es hacer que la gestión de las finanzas personales sea más sencilla y accesible para todos. Queremos ayudar a las personas a tener un mayor control de sus gastos e ingresos, y permitirles tomar decisiones financieras más informadas. </p>
+                        <p style={{ marginBottom: "5%" }}>'digitalOrganizer' ha sido diseñada pensando en la simplicidad y la intuitividad para el usuario. No solicitamos información innecesaria y no estamos interesados en obtener datos personales de nuestros usuarios. Nuestra única finalidad es hacer que la gestión de las finanzas personales sea más sencilla y accesible para todos. Queremos ayudar a las personas a tener un mayor control de sus gastos e ingresos, y permitirles tomar decisiones financieras más informadas. </p>
                     </div>
-                    <Image src={"https://cdn-icons-png.flaticon.com/512/7752/7752761.png"} alt={"logo"} width={180} height={180}/>
+                    <div className='registerCarousel'>
+                    <Carousel>
+                        <CarouselBox text={"Optimiza tu tiempo y tus finanzas en un solo lugar. Nuestra aplicación te permite gestionar tanto tus gastos como tu agenda diaria, brindándote una solución integral para organizar tu vida."} image={"https://cdn-icons-png.flaticon.com/512/809/809448.png"} />
+                        <CarouselBox text={"Visualiza tus datos financieros en gráficos interactivos y fáciles de entender. Observa cómo tus gastos fluctúan a lo largo del tiempo y identifica áreas en las que puedes ajustar tus hábitos para lograr un mayor equilibrio económico."} image={"https://cdn-icons-png.flaticon.com/512/1177/1177568.png"} marginTop={"15px"} />
+                        <CarouselBox text={"Descubre áreas de oportunidad para ahorrar dinero mediante el análisis de tus gastos. Categoriza y etiqueta tus transacciones para identificar patrones y tomar decisiones financieras más inteligentes."} image={"https://cdn-icons-png.flaticon.com/512/10008/10008777.png"} marginTop={"-10px"} />
+                        <CarouselBox text={"Simplifica tu vida con nuestra aplicación todo en uno. Agenda reuniones, establece metas financieras y realiza un seguimiento de tu progreso, permitiéndote administrar tu tiempo y tu dinero de manera eficiente."} image={"https://cdn-icons-png.flaticon.com/512/5141/5141636.png"} marginTop={"15px"} />
+                    </Carousel>
+                    </div>
                 </div>
                 <div className='indexRightSection'>
-                    <p style={{ textAlign: "start", margin: "0px" }}>Nuevo registro:</p>
                     <form onSubmit={handleSubmit}>
+                        <p style={{ textAlign: "center", margin: "0px" }}>Nuevo registro:</p>
                         <input type='text' name='userName' placeholder='@Usuario' onChange={handleChange} style={{ border: `${theUserNameBorder}` }} />
                         <input type='password' name='password' placeholder='@Contraseña' onChange={handleChange} style={{ border: `${thePasswordBorder}` }} />
                         <input type='password' name='passwordAgain' placeholder='@ Repetir contraseña' onChange={handleChange} style={{ border: `${thePasswordBorder}` }} />

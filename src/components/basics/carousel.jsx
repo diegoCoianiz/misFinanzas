@@ -109,7 +109,7 @@ const Carousel = ({ children, setTime = 4000, timeCondition = true }) => {
           </div>
         ))}
       </div>
-      <div className="silderButtonTime" style={styles.buttonContainer}>
+      <div className="sliderButtonTime" style={styles.buttonContainer}>
         {children.map((child, index) => (
           <div
           key={index}
