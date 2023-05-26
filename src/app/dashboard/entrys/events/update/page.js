@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 const UpdateEvents = ({ searchParams }) => {
-
   const router = useRouter()
   const [eventData, setEventData] = useState({
     eventTitle: '',
