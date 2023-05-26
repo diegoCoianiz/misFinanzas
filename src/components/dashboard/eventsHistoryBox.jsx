@@ -18,7 +18,7 @@ const EventsHistoryBox = ({ events }) => {
 
         return (
           <div key={event._id}>
-            {showFinalCountdown && <p style={{marginBottom:"5px"}}> {daysUntillEventStart} días para el próximo evento: </p>}
+            {showFinalCountdown && <p style={{marginBottom:"5px"}}> {daysUntillEventStart+1} {daysUntillEventStart+1 === 1 ? "día" : "dias" } para el próximo evento: </p>}
             <EventBox {...event} showFinalCountdown={showFinalCountdown} />
           </div>
         );

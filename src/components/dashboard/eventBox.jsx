@@ -20,7 +20,7 @@ const EventBox = ({ _id, start, until, title, description, estimatedCost, recurr
   const [showItems, setShowItems] = useState("none")
 
   const [renderedContent, setRenderedContent] = useState("");
-  let contentToRender = ` ${description}${showFinalCountdown ? ` el costo estimado de este evento es de $${estimatedCost}.` : ` Este evento comenzará en ${Math.floor((new Date(start) - new Date()) / 86400000)} días, su costo estimado es de $${estimatedCost}`}`;
+  let contentToRender = ` Descripción: ${description}.${showFinalCountdown ? ` Costo estimado del evento: $${estimatedCost}.` : ` Este evento comenzará en ${Math.floor((new Date(start) - new Date()) / 86400000) + 1} días, su costo estimado es de $${estimatedCost}`}`;
   if (until) {
     contentToRender += ` y durará ${Math.floor((new Date(until) - new Date(start)) / 86400000)} días, hasta el ${new Date(until).toLocaleDateString('es', { day: 'numeric', month: 'long' })}.`;
   }
@@ -37,7 +37,7 @@ const EventBox = ({ _id, start, until, title, description, estimatedCost, recurr
         clearInterval(interval);
       }
     }, 20);
-    
+
     return () => {
       clearInterval(interval);
       setRenderedContent("");
@@ -50,7 +50,7 @@ const EventBox = ({ _id, start, until, title, description, estimatedCost, recurr
 
   const handleDelete = (e) => {
     e.preventDefault();
-    fetch(`/api/transactions?id=${transaction_id}`, {
+    fetch(`/api/events?id=${_id}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -64,35 +64,31 @@ const EventBox = ({ _id, start, until, title, description, estimatedCost, recurr
       });
   }
   return (
-    <div style={{ textAlign: "start", marginLeft: "-20px", marginBottom: "5px" }} className='eventBox'>
-      <div style={{ backgroundColor: _backgroundColor, border: "none", borderRadius: "10px", padding: "10px", width: "95%", height: "55px", boxShadow: _boxShadowColor }}>
+    <div style={{ marginLeft: "-20px", marginBottom: "-11px" }} className='eventBox'>
+      <div style={{ backgroundColor: _backgroundColor, border: "none", borderRadius: "10px", padding: "10px", width: "95%", boxShadow: _boxShadowColor }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}  >
           <div style={{ width: "70%", cursor: "pointer" }} onClick={() => setShowItems(showItems === "none" ? "block" : "none")}>
             <div style={{ backgroundColor: _buttonBackgoundColor, margin: "0px", borderRadius: "50%", padding: "0px", width: "25px", height: "25px", boxShadow: _boxShadowColor }} >
             </div>
-            <h1 style={{ fontSize: "30px", marginTop: "0px" }}> {`< ${title} >`} </h1>
+            <h1 style={{ fontSize: "25px", marginTop: "-20px", marginLeft: "26px" }}>
+              {`< ${title.length <= 13 ? title : title.slice(0, 10) + ".."} >`}
+            </h1>
           </div>
-          <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between", width:"30%", alignItems:"flex-end", height:"100%"}}>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: "30%", alignItems: "flex-end", height: "100%" }}>
             <p>{new Date(start).toLocaleDateString('es', { day: 'numeric', month: 'long' })}</p>
-            <div style={{display:"flex"}}>
+            <div style={{ display: "flex" }}>
               <button style={styles.deleteButton} onClick={handleDelete}><Image src={"https://cdn-icons-png.flaticon.com/128/6794/6794645.png"} width={25} height={25} alt={'delete'} /></button>
               <button style={styles.deleteButton}>
-              <Link href={`/dashboard/entrys/update?id=${_id}`}><Image src={"https://cdn-icons-png.flaticon.com/128/3597/3597075.png"} width={25} height={25} alt={"update"} /></Link>
+                <Link href={`/dashboard/entrys/events/update?id=${_id}`}><Image src={"https://cdn-icons-png.flaticon.com/128/3597/3597075.png"} width={25} height={25} alt={"update"} /></Link>
               </button>
             </div>
           </div>
         </div>
-      </div>
-      <div ref={descriptionRef} style={{ display: showItems, textAlign: "start", marginTop: "10px" }}>
-        {/* <p>{description}</p>
-        <p>
-          {showFinalCountdown ? `el costo estimado de este evento es de $${estimatedCost}.`
-            : `Este evento comenzará en ${Math.floor((new Date(start) - new Date()) / 86400000)} días, su costo estimado es de $${estimatedCost}`
-          }
-          {until && ` y durará ${Math.floor((new Date(until) - new Date(start)) / 86400000)} días, hasta el ${new Date(until).toLocaleDateString('es', { day: 'numeric', month: 'long' })}.`}
-          {recurrence !== "none" && <p>periodicidad: {translatedRecurrence[recurrence]}</p>}
-        </p> */}
-        {renderedContent}
+        <div ref={descriptionRef} style={{ display: showItems, textAlign: "start", marginTop: "10px" }}>
+          <hr style={{ marginTop: "-10px" }}></hr>
+          {title.length >= 13 && <p>Titulo: {title}</p> }
+          {renderedContent}
+        </div>
       </div>
       <br></br>
     </div>

@@ -1,25 +1,48 @@
 'use client'
-import React, { useState } from 'react';
+import React from 'react'
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
-const NewEventForm = ({searchParams}) => {
+const UpdateEvents = ({ searchParams }) => {
+
   const router = useRouter()
-  const [day, month, year] = searchParams.selection.split('/');
-  const startDate = new Date(`${month}/${day}/${year}`);
-
   const [eventData, setEventData] = useState({
     eventTitle: '',
-    eventStartDate: startDate,
-    eventDuration: 'oneDay',
-    recurrence: "none",
+    eventStartDate: '',
+    eventDuration: '',
+    recurrence: "",
     eventUntilDate: '',
     estimatedCost: 0,
     eventDescription: '',
-    creatorId: searchParams.id,
+    creatorId: '',
     friendNames: '',
   });
   const categoryOptions = ["1 vez", "diariamente", "semanalmente", "mensualmente", "anualmente"]
   const eventsModelRecurrenceConfig = ['none', 'daily', 'weekly', 'monthly', 'yearly']
+
+  //GET
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`/api/events?id=${searchParams.id}&request=update`);
+      const awaitEvent = await response.json();
+      if (awaitEvent.selfEvent !== undefined) {
+        const { selfEvent } = awaitEvent
+        setEventData({
+          _id: searchParams.id,
+          eventTitle: selfEvent.title,
+          eventStartDate: selfEvent.start,
+          eventDuration: selfEvent.oneDay ? "oneDay" : "toManyDays",
+          recurrence: selfEvent.recurrence,
+          eventUntilDate: selfEvent.until,
+          estimatedCost: selfEvent.estimatedCost,
+          eventDescription: selfEvent.description,
+          creatorId: selfEvent.creator,
+          friendNames: '',
+        });
+      }
+    }
+    fetchData();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +55,7 @@ const NewEventForm = ({searchParams}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     fetch('/api/events', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -51,7 +74,7 @@ const NewEventForm = ({searchParams}) => {
         name={"recurrence"}
         value={eventsModelRecurrenceConfig[id]}
         onChange={handleChange}
-        defaultValue ={id === 0 ? true : false}
+        defaultValue={id === 0 ? true : false}
       >
         {category}
       </option>
@@ -60,8 +83,16 @@ const NewEventForm = ({searchParams}) => {
 
   return (
     <div className='newTransactionFormPage'>
-      <p style={{ textAlign: 'start', marginBottom: '-20px' }}>Nuevo evento para el {searchParams.selection}:</p>
+      <p style={{ textAlign: 'start', marginBottom: '-20px' }}>Modificar evento para el {new Date(eventData.eventStartDate).getDate() } de {new Date(eventData.eventStartDate).toLocaleString("default", { month: "long" })}:</p>
       <form onSubmit={handleSubmit} style={styles.form}>
+        <input
+          style={styles.input}
+          type='date'
+          name='eventStartDate'
+          placeholder='@Fecha del evento'
+          value={eventData.eventStartDate.split("T")[0]}
+          onChange={handleChange}
+        />
         <input
           style={styles.input}
           type='text'
@@ -78,12 +109,12 @@ const NewEventForm = ({searchParams}) => {
           value={eventData.eventDescription}
           onChange={handleChange}
         />
-        <label htmlFor='recurrence' style={{ width: "102%"}}>
-          <select style={{ width: "101.5%", height: "60px"}} name='recurrence' id='recurrence' value={eventData.recurrence} onChange={handleChange}>
+        <label htmlFor='recurrence' style={{ width: "102%" }}>
+          <select style={{ width: "101.5%", height: "60px" }} name='recurrence' id='recurrence' value={eventData.recurrence} onChange={handleChange}>
             {renderCategoryOptions()}
           </select>
         </label>
-      <p style={{ textAlign: 'start', marginBottom: '-0px' }}>Costo estimado del evento?</p>
+        <p style={{ textAlign: 'start', marginBottom: '-0px' }}>Costo estimado del evento?</p>
         <input
           style={styles.input}
           type='number'
@@ -93,7 +124,7 @@ const NewEventForm = ({searchParams}) => {
           value={eventData.estimatedCost}
           onChange={handleChange}
         />
-      {/* <p style={{ textAlign: 'start', marginBottom: '-0px' }}>Compartir este evento con amigos?</p>
+        {/* <p style={{ textAlign: 'start', marginBottom: '-0px' }}>Compartir este evento con amigos?</p>
         <input
           style={styles.input}
           type='text'
@@ -128,26 +159,24 @@ const NewEventForm = ({searchParams}) => {
         </div>
         {eventData.eventDuration === "toManyDays" ? (
           <div>
-      <p style={{ textAlign: 'start', marginBottom: '-0px' }}>Hasta la fecha:</p>
+            <p style={{ textAlign: 'start', marginBottom: '-0px' }}>Hasta la fecha:</p>
             <input
               style={styles.input}
               type='date'
               name='eventUntilDate'
-              placeholder='@Fecha del evento'
-              value={eventData.eventUntilDate}
+              placeholder='@Fecha de final del evento'
+              value={eventData.eventUntilDate ? eventData.eventUntilDate.split("T")[0] : new Date(new Date(eventData.eventStartDate).getTime() + (24 * 60 * 60 * 1000)).toISOString().split('T')[0]}
               onChange={handleChange}
             />
           </div>
         ) : ("")}
         <button style={styles.button} type='submit'>
-          Crear evento
+          Modificar evento
         </button>
       </form>
     </div>
   );
 };
-
-export default NewEventForm;
 
 const styles = {
   form: {
@@ -159,3 +188,4 @@ const styles = {
     bordderRadius: "10px",
   }
 }
+export default UpdateEvents

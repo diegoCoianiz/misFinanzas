@@ -7,20 +7,19 @@ export const config = {
 }
 
 export default async function handler({ method, body, url }, res) {
-    const { eventTitle, eventStartDate, eventDuration, recurrence, eventUntilDate, estimatedCost, eventDescription, creatorId, friendNames } = body;
+    const { _id, eventTitle, eventStartDate, eventDuration, recurrence, eventUntilDate, estimatedCost, eventDescription, creatorId, friendNames } = body;
     const urlParams = new URLSearchParams(url.split('?')[1]);
     const getID = urlParams.get('id');
     const getRequest = urlParams.get('request');
 
-
     try {
         switch (method) {
-          case 'GET':
-            if (!getRequest) {
-              const events = await eventsModel.find({ creator: getID }).sort({ start: 1 });
-              const eventsToReturn = events.filter(event => new Date(event.start) >= new Date());
-              return res.status(200).json({ events: eventsToReturn });
-            } else {
+            case 'GET':
+                if (!getRequest) {
+                    const events = await eventsModel.find({ creator: getID }).sort({ start: 1 });
+                    const eventsToReturn = events.filter(event => new Date(event.start) >= new Date());
+                    return res.status(200).json({ events: eventsToReturn });
+                } else {
                     const selfEvent = await eventsModel.findById(getID);
                     return res.status(200).json({ selfEvent });
                 }
@@ -51,12 +50,22 @@ export default async function handler({ method, body, url }, res) {
 
             case 'PUT':
                 const updatedTransaction = await eventsModel.findOneAndUpdate(
-                    { _id }, { amount, notes, category, type }, { new: true }
+                    { _id }, {
+                    title: eventTitle,
+                    start: new Date(eventStartDate).toISOString(),
+                    oneDay: eventDuration === 'oneDay',
+                    recurrence: recurrence,
+                    until: new Date(eventUntilDate).toISOString(),
+                    estimatedCost: estimatedCost,
+                    description: eventDescription,
+                    creator: creatorId,
+                    /* friends: friendNames */ },
+                    { new: true }
                 );
                 if (!updatedTransaction) {
                     return res.status(404).json({ msg: 'Transaction not found' });
                 }
-                return res.status(200).json({ res: `/dashboard?id=${updatedTransaction.userId}` });
+                return res.status(200).json({ res: `/dashboard?id=${updatedTransaction.creator}` });
                 break;
 
             default:
