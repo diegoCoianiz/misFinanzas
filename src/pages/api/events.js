@@ -11,7 +11,6 @@ export default async function handler({ method, body, url }, res) {
     const urlParams = new URLSearchParams(url.split('?')[1]);
     const getID = urlParams.get('id');
     const getRequest = urlParams.get('request');
-
     try {
         switch (method) {
             case 'GET':

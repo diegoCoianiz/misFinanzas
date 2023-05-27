@@ -71,7 +71,7 @@ const EventBox = ({ _id, start, until, title, description, estimatedCost, recurr
             <div style={{ backgroundColor: _buttonBackgoundColor, margin: "0px", borderRadius: "50%", padding: "0px", width: "25px", height: "25px", boxShadow: _boxShadowColor }} >
             </div>
             <h1 style={{ fontSize: "25px", marginTop: "-20px", marginLeft: "26px" }}>
-              {`< ${title.length <= 13 ? title : title.slice(0, 10) + ".."} >`}
+              {`< ${title.length <= 13 ? title : title.slice(0, 10) + ".."} >`} 
             </h1>
           </div>
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: "30%", alignItems: "flex-end", height: "100%" }}>

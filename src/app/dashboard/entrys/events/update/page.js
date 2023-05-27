@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 const UpdateEvents = ({ searchParams }) => {
+  const eventID = searchParams.id
   const router = useRouter()
   const [eventData, setEventData] = useState({
     eventTitle: '',
@@ -19,10 +20,11 @@ const UpdateEvents = ({ searchParams }) => {
   const categoryOptions = ["1 vez", "diariamente", "semanalmente", "mensualmente", "anualmente"]
   const eventsModelRecurrenceConfig = ['none', 'daily', 'weekly', 'monthly', 'yearly']
 
-  //GET
+  //GET 
+  
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`/api/events?id=${searchParams.id}&request=update`);
+      const response = await fetch(`/api/events?id=${eventID}&request=true`);
       const awaitEvent = await response.json();
       if (awaitEvent.selfEvent !== undefined) {
         const { selfEvent } = awaitEvent
@@ -41,7 +43,8 @@ const UpdateEvents = ({ searchParams }) => {
       }
     }
     fetchData();
-  }, []);
+  }, []); 
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
