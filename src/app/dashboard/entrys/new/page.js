@@ -3,7 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { incomeCategoryColors, expenseCategoryColors } from '@/data/categoryAndColors'
-import TransactionBox from '@/components/dashboard/transactionBox'
+import TransactionBox from '@/components/dataBox/transactionBox'
 
 const NewAmount = ({ searchParams }) => {
 
@@ -87,7 +87,7 @@ const NewAmount = ({ searchParams }) => {
     <div className='newTransactionFormPage'>
       <p style={{textAlign:"start", marginBottom:"-20px"}}>nueva transacción:</p>
       <form onSubmit={handleSubmit} style={styles.form}>
-        <input style={styles.input} type='number' step="0.1" name='amount' placeholder='@Monto: $500' onChange={handleChange} />
+        <input style={styles.input} type='number' step="0.01" name='amount' placeholder='@Monto: $500' onChange={handleChange} />
         <input style={styles.input} type='text' name='notes' placeholder='@Descripción opcional: "pago de alquiler"' onChange={handleChange} />
 
         <div style={{ margin: "15px 2px" }}>

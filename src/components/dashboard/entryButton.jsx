@@ -5,8 +5,8 @@ import Link from 'next/link'
 const EntryButton = ({ img, alt, width = 45, height = 52, userId, link, handleUpdateShowHistoryOf }) => {
 
     const handleClick = () => {
-        if (!link && alt === "/events" || "/transactions") {
-            handleUpdateShowHistoryOf();
+        if (!link){
+            handleUpdateShowHistoryOf(alt.slice(1));
         }
       };
 

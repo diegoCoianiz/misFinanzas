@@ -3,7 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { incomeCategoryColors, expenseCategoryColors } from '@/data/categoryAndColors'
-import TransactionBox from '@/components/dashboard/transactionBox'
+import TransactionBox from '@/components/dataBox/transactionBox'
 
 const UpdateTransaction = ({ searchParams }) => {
 

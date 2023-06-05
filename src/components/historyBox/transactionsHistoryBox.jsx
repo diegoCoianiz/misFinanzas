@@ -1,5 +1,5 @@
 import React from 'react'
-import TransactionBox from "@/components/dashboard/transactionBox";
+import TransactionBox from "@/components/dataBox/transactionBox";
 import { useState, } from 'react';
 
 const TransactionsHistoryBox = ({ transactions, groupedTransactions }) => {
@@ -53,7 +53,7 @@ const TransactionsHistoryBox = ({ transactions, groupedTransactions }) => {
 
   return (
     <>
-      <h1 style={{ textAlign: "start", marginBottom: "10px" }}>{"<"} Historial{totalOfPages > 0 ? ` . Página ${transactionsPageView + 1}` : ""} {">"}</h1>
+      <h1  style={{ textAlign: "start", marginBottom: "10px" }}>{"<"} Transacciones{totalOfPages > 0 ? ` . Página ${transactionsPageView + 1}` : ""} {">"}</h1>
       {transactions.length > 0 ? (
         transactions.slice(transactionsPageView * 10, (transactionsPageView + 1) * 10).map((transaction, num) => {
           const index = num + transactionsPageView * 10

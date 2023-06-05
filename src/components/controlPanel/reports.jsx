@@ -43,8 +43,7 @@ const Reports = ({ info }) => {
       const amount = parseFloat(cur.amount);
       return acc + (cur.type === "egreso" ? -amount : amount);
     }, 0);
-
-    return ` Tu promedio de gastos comúnes (sin Alquiler ni Viajes) es de $${averageExpenses.toFixed(1)} por día y $${(averageExpenses * numExpenses).toFixed(1)} hasta la fecha. Para los próximos ${daysInCurrentMonth - currentDate} días se esperan $${(averageExpenses * (daysInCurrentMonth - currentDate)).toFixed(1)} mas de gastos (con un total de $${(averageExpenses.toFixed(1) * daysInCurrentMonth).toFixed(1)} gastados) finalizando el mes con un capital de $${(capital - (averageExpenses * (daysInCurrentMonth - currentDate))).toFixed(1)}`;
+    return ` Tu promedio de gastos comúnes (sin Alquiler ni Viajes) es de $${averageExpenses.toFixed(1)} por día y $${(averageExpenses * numExpenses).toFixed(1)} hasta la fecha (con viajes). Para los próximos ${daysInCurrentMonth - currentDate + 1} días se esperan $${(averageExpenses * (daysInCurrentMonth - currentDate + 1)).toFixed(1)} mas de gastos (un total de $${(averageExpenses.toFixed(1) * daysInCurrentMonth + 1).toFixed(1)} gastados) finalizando el mes con un capital de $${(capital - (averageExpenses * (daysInCurrentMonth - currentDate))).toFixed(1)}`;
   };
 
   // 2) Función para obtener las categorías con mayor gasto del mes

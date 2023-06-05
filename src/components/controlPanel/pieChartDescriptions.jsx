@@ -18,7 +18,7 @@ const PieChartDescriptions = ({ totalIncome, totalAmount, orderCategories, categ
         ) : null
       ))}
       <h1 style={{ textAlign: "start", marginBottom: "0px" }}>
-        Gastos: $${Math.round(totalAmount * 10) / 10}
+        Gastos: ${Math.round(totalAmount * 10) / 10}
       </h1>
       {orderCategories.map(({ label, value }, index) => (
         value < 0 && index < 8 ? (

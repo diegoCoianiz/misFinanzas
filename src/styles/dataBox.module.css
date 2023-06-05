@@ -1,0 +1,28 @@
+/* Card.css */
+
+.card {
+    /* background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden; */
+    animation: shadowAnimation 5s linear infinite;
+}
+
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 2px 2px#00c8ff, 0 0 2px 2px #3c67e3, 0 0 2px 2px #4e00c2;
+    }
+
+    50% {
+        box-shadow: 0 0 3px 3px#4e00c2, 
+    }
+
+    100% {
+        box-shadow: 0 0 2px 2px #00ffbf, 0 0 2px 2px #3c67e3
+    }
+}
+
+
+/* border-image: linear-gradient(to right,  #5ddcff, #3c67e3 43%, #4e00c2); */

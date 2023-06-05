@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { incomeCategoryColors, expenseCategoryColors } from '@/data/categoryAndColors'
+import stylesCss from "../../styles/dataBox.module.css"
 
 const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }) => {
   const notesLength = 90
@@ -58,7 +59,7 @@ const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }
   // }
 
   return (
-    <div style={type === 'egreso' ? { ...styles.box, backgroundColor: 'rgb(131 25 25)', boxShadow: "2px 2px 2px #1E9EA8" } : { ...styles.box, backgroundColor: 'rgb(0 129 37)', boxShadow: "2px 2px 2px  #FFBA08" }}>
+    <div className={...stylesCss.card} style={type === 'egreso' ? { ...styles.box, backgroundColor: 'rgb(131 25 25)', boxShadow: "2px 2px 2px #1E9EA8" } : { ...styles.box, backgroundColor: 'rgb(0 129 37)', boxShadow: "2px 2px 2px  #FFBA08" }}>
       <div style={{ width: "90%" }}>
         <div style={styles.date}>
 
@@ -92,7 +93,7 @@ const styles = {
   box: {
     padding: '10px',
     marginTop: '10px',
-    marginLeft: '-20px',
+    marginLeft: '-18px',
     height: '50px',
     borderRadius: '15px',
     display: "flex",

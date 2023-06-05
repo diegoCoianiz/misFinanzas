@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
+import stylesCss from "../../styles/dataBox.module.css"
 
 const EventBox = ({ _id, start, until, title, description, estimatedCost, recurrence, showFinalCountdown, }) => {
 
@@ -64,8 +65,8 @@ const EventBox = ({ _id, start, until, title, description, estimatedCost, recurr
       });
   }
   return (
-    <div style={{ marginLeft: "-20px", marginBottom: "-11px" }} className='eventBox'>
-      <div style={{ backgroundColor: _backgroundColor, border: "none", borderRadius: "10px", padding: "10px", width: "95%", boxShadow: _boxShadowColor }}>
+    <div  style={{ marginLeft: "-20px", marginBottom: "-11px" }} className='eventBox'>
+      <div className={...stylesCss.card} style={{ backgroundColor: _backgroundColor, border: "none", borderRadius: "10px", padding: "10px", width: "95%", boxShadow: _boxShadowColor }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}  >
           <div style={{ width: "70%", cursor: "pointer" }} onClick={() => setShowItems(showItems === "none" ? "block" : "none")}>
             <div style={{ backgroundColor: _buttonBackgoundColor, margin: "0px", borderRadius: "50%", padding: "0px", width: "25px", height: "25px", boxShadow: _boxShadowColor }} >

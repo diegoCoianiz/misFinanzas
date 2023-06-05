@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Carousel from '@/components/basics/carousel'
-import CarouselBox from '@/components/carouselBox'
+import CarouselBox from '@/components/basics/carouselBox'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 

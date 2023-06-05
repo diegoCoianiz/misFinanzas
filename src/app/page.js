@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from "next/navigation"
 import Carousel from '@/components/basics/carousel'
-import CarouselBox from '@/components/carouselBox'
+import CarouselBox from '@/components/basics/carouselBox'
 
 const Index = () => {
   const router = useRouter()

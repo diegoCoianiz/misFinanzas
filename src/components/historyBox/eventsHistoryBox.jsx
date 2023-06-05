@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react'
-import EventBox from './eventBox'
+import EventBox from '../dataBox/eventBox'
 
 const EventsHistoryBox = ({ events }) => {
   const [transactionsPageView, setTransactionsPageView] = useState(0);
@@ -9,7 +9,7 @@ const EventsHistoryBox = ({ events }) => {
   return (
     <>
       <h1 style={{ textAlign: "start", marginBottom: "10px" }}>
-        {"<"} Historial{totalOfPages > 0 ? ` . Página ${transactionsPageView + 1}` : ""} {">"}
+        {"<"} Eventos{totalOfPages > 0 ? ` . Página ${transactionsPageView + 1}` : ""} {">"}
       </h1>
 
       {events.map((event, id) => {
