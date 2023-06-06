@@ -36,35 +36,13 @@ const TransactionBox = ({ amount, date, category, type, notes, transaction_id, }
       });
   }
 
-
-  // const handleUpdate = (e) => {
-  //   e.preventDefault();
-  //   fetch(`/api/transaction/${transaction_id}`, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       myData: 'updated'
-  //     })
-  //   })
-  //     .then(response => {
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! status: ${response.status}`);
-  //       }
-  //     })
-  //     .catch(error => {
-  //       null
-  //     });
-  // }
-
   return (
-    <div className={...stylesCss.card} style={type === 'egreso' ? { ...styles.box, backgroundColor: 'rgb(131 25 25)', boxShadow: "2px 2px 2px #1E9EA8" } : { ...styles.box, backgroundColor: 'rgb(0 129 37)', boxShadow: "2px 2px 2px  #FFBA08" }}>
+    <div className={...stylesCss.card} style={type === 'egreso' ? { ...styles.box, backgroundColor: 'rgb(131 25 25)',} : { ...styles.box, backgroundColor: 'rgb(0 129 37)',}}>
       <div style={{ width: "90%" }}>
         <div style={styles.date}>
 
           <div style={{ display: "flex", flexDirection: "row", }}>
-            <button style={type === 'egreso' ? { ...styles.colorButton, backgroundColor: buttonColor[1], boxShadow: "2px 2px 2px #1E9EA8" } : { ...styles.colorButton, backgroundColor: buttonColor[1], boxShadow: "2px 2px 2px #7B2F59" }}></button>
+            <button className='shadowAnimation' style={type === 'egreso' ? { ...styles.colorButton, backgroundColor: buttonColor[1], } : { ...styles.colorButton, backgroundColor: buttonColor[1]}}></button>
             <p style={{ margin: "0px 10px" }}>{"<"}{category}{">"}</p>
           </div>
           <p style={{margin:"0px", fontSize:"12px"}}>

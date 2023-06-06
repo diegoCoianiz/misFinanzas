@@ -6,6 +6,7 @@ import PieChartDescriptions from "./pieChartDescriptions";
 const Stadistics = ({ chart }) => {
   // Creamos la lista de códigos de colores solo una vez, usando useMemo
   const categoryCodes = useMemo(() => createLabelColors([...incomeCategoryColors, ...expenseCategoryColors, ...capitalAbailable]), []);
+  const currentMonth = new Date().getMonth() + 1
 
   // Calculamos los datos para el gráfico
   const {totalIncome, totalAmount, orderCategoriesForPieDescription, labelsForPieChart, valuesForPieChart} = useMemo(() => {

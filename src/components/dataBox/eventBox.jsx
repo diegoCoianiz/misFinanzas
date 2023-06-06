@@ -65,11 +65,11 @@ const EventBox = ({ _id, start, until, title, description, estimatedCost, recurr
       });
   }
   return (
-    <div  style={{ marginLeft: "-20px", marginBottom: "-11px" }} className='eventBox'>
-      <div className={...stylesCss.card} style={{ backgroundColor: _backgroundColor, border: "none", borderRadius: "10px", padding: "10px", width: "95%", boxShadow: _boxShadowColor }}>
+    <div  style={{ marginLeft: "-17px", marginBottom: "-11px" }} className='eventBox'>
+      <div className={...stylesCss.card} style={{ backgroundColor: _backgroundColor, border: "none", borderRadius: "10px", padding: "10px", width: "95%", }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}  >
           <div style={{ width: "70%", cursor: "pointer" }} onClick={() => setShowItems(showItems === "none" ? "block" : "none")}>
-            <div style={{ backgroundColor: _buttonBackgoundColor, margin: "0px", borderRadius: "50%", padding: "0px", width: "25px", height: "25px", boxShadow: _boxShadowColor }} >
+            <div className='shadowAnimation' style={{ backgroundColor: _buttonBackgoundColor, margin: "0px", borderRadius: "50%", padding: "0px", width: "25px", height: "25px",}} >
             </div>
             <h1 style={{ fontSize: "25px", marginTop: "-20px", marginLeft: "26px" }}>
               {`< ${title.length <= 13 ? title : title.slice(0, 10) + ".."} >`} 
@@ -86,7 +86,7 @@ const EventBox = ({ _id, start, until, title, description, estimatedCost, recurr
           </div>
         </div>
         <div ref={descriptionRef} style={{ display: showItems, textAlign: "start", marginTop: "10px" }}>
-          <hr style={{ marginTop: "-10px" }}></hr>
+          <hr className='shadowAnimation' style={{ marginTop: "-10px" }}></hr>
           {title.length >= 13 && <p>Titulo: {title}</p> }
           {renderedContent}
         </div>
