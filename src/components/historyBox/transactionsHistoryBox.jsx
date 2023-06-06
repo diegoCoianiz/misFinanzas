@@ -1,6 +1,6 @@
 import React from 'react'
 import TransactionBox from "@/components/dataBox/transactionBox";
-import { useState, } from 'react';
+import { useState, useEffect} from 'react';
 
 const TransactionsHistoryBox = ({ transactions, groupedTransactions }) => {
   const [transactionsPageView, setTransactionsPageView] = useState(0);
@@ -8,6 +8,18 @@ const TransactionsHistoryBox = ({ transactions, groupedTransactions }) => {
   const [unifyingButtonColor, setUnifyingButtonColor] = useState({});
   const [allowedIds, setAllowedIds] = useState(["", "", []]);
   const [allowedUnifyingButton, setAllowedUnifyingButton] = useState();
+  const [monthEndedHr, setMonthEndedHr] = useState(0);
+
+  
+  useEffect(() => {
+    const thisMonthIs = Number(transactions[0]?.createdAt.slice(5, 7))
+    // setMonthEndedHr({lastMonth:Number(transactions[0]?.createdAt.slice(5, 7)), render:true})
+    const firstIndexOfLastMonth = transactions.findIndex((transaction) => {
+      const transactionMonth = Number(transaction.createdAt.slice(5, 7));
+      return transactionMonth !== thisMonthIs;
+    })
+    setMonthEndedHr(firstIndexOfLastMonth)
+  },[transactions])
 
   const handleUnifySubmit = (index) => {
     if (allowedIds[2].length > 1 && index === allowedUnifyingButton) {
@@ -51,24 +63,32 @@ const TransactionsHistoryBox = ({ transactions, groupedTransactions }) => {
     }
   };
 
+  const handleMonthEndedHr = (date) => {
+    if (date.slice(8, 10) !== monthEndedHr) setMonthEndedHr(date.slice(8, 10));
+  };
+
   return (
     <>
-      <h1  style={{ textAlign: "start", marginBottom: "10px" }}>{"<"} Transacciones{totalOfPages > 0 ? ` . Página ${transactionsPageView + 1}` : ""} {">"}</h1>
+      <h1 style={{ textAlign: "start", marginBottom: "10px" }}>{"<"} Transacciones{totalOfPages > 0 ? ` . Página ${transactionsPageView + 1}` : ""} {">"}</h1>
       {transactions.length > 0 ? (
         transactions.slice(transactionsPageView * 10, (transactionsPageView + 1) * 10).map((transaction, num) => {
           const index = num + transactionsPageView * 10
           const transactionDate = transaction.createdAt.slice(0, 10);
           const isLastTransactionForDay =
-          groupedTransactions[transactionDate]?.firstTransactionIndex === index;
-          if (isLastTransactionForDay) {
+            groupedTransactions[transactionDate]?.firstTransactionIndex === index;
 
+          if (isLastTransactionForDay) {
             return (
               <div key={`total-${transactionDate}`}>
+
+                {index === monthEndedHr && (<hr className='shadowAnimation' style={{ marginTop: "50px", marginLeft:"-15px", marginBottom:"30px" }}></hr>)}
+
                 {/* GASTOS DEL DÍA + BOTON DE UNIFICAR */}
                 <div style={{ margin: "10px", display: "flex", paddingTop: "10px", justifyContent: "center", textAlign: "center", marginBottom: "10px" }}>
                   <p style={{ margin: "0px" }}>Gastos del {transactionDate.slice(6, 10).split("-").reverse().join("/")}: $
-                  {groupedTransactions[transactionDate].total} </p>
-                  
+                    {groupedTransactions[transactionDate].total} </p>
+
+                  {/* BOTON DE UNIFICAR CATEGORÍAS DUPLICADAS */}
                   {groupedTransactions[transactionDate].duplicatedCategories ?
                     (
                       <button style={{ padding: "10px", width: "85px", marginTop: "-11px", marginLeft: "10px", backgroundColor: unifyingButtonColor[`color_${index}`] }} onClick={() => { handleUnifySubmit(index) }}>Unificar</button>
@@ -76,6 +96,7 @@ const TransactionsHistoryBox = ({ transactions, groupedTransactions }) => {
                   }
                 </div>
 
+                {/* TRANSACTION BOX */}
                 <div onClick={() => handleUnifyTransactions(transaction._id, transaction.category, transaction.createdAt, groupedTransactions[transactionDate]?.firstTransactionIndex)}>
                   <TransactionBox amount={transaction.amount} date={transaction.createdAt} category={transaction.category} type={transaction.type} notes={transaction.notes} transaction_id={transaction._id} />
                 </div>
@@ -83,6 +104,7 @@ const TransactionsHistoryBox = ({ transactions, groupedTransactions }) => {
             );
           } else {
             return (
+              // {/* TRANSACTION BOX */}
               <div key={transaction._id}>
                 <div onClick={() => handleUnifyTransactions(transaction._id, transaction.category, transaction.createdAt, groupedTransactions[transactionDate]?.firstTransactionIndex)}>
                   <TransactionBox amount={transaction.amount} date={transaction.createdAt} category={transaction.category} type={transaction.type} notes={transaction.notes} transaction_id={transaction._id} />
