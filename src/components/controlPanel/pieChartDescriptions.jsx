@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const PieChartDescriptions = ({ totalIncome, totalAmount, orderCategories, categoryCodes = {} }) => {
+const PieChartDescriptions = ({ totalIncome, totalAmount, orderCategories, categoryCodes = {}, totalAmountForThisMonth }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
@@ -18,7 +18,7 @@ const PieChartDescriptions = ({ totalIncome, totalAmount, orderCategories, categ
         ) : null
       ))} */}
       <h1 style={{ textAlign: "start", marginBottom: "0px" }}>
-        Gastos: ${Math.round(totalAmount * 10) / 10}
+        Gastos: ${Math.round(totalAmountForThisMonth * 10) / 10}
       </h1>
       {orderCategories.map(({ label, value }, index) => (
         value < 0 && index < 13 ? (
