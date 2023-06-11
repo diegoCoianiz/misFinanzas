@@ -19,20 +19,20 @@ const Stadistics = ({ chart }) => {
     return transactionYear === currentYear && transactionMonth === currentMonth;
   });
 
-  // Calculamos los datos totales para el gráfico
-  let totalIncome = 0;
-  let totalAmount = 0;
 
-  for (const element of chart) {
-    if (element.type === "ingreso") {
-      totalIncome += Number(element.amount);
-    } else {
-      totalAmount += Number(element.amount);
+  const { orderCategoriesForPieDescription, labelsForPieChart, valuesForPieChart, totalAmountForThisMonth, totalIncome, totalAmount } = useMemo(() => {
+    let totalIncome = 0;
+    let totalAmount = 0;
+  
+    // Calculamos los datos totales para el gráfico
+    for (const element of chart) {
+      if (element.type === "ingreso") {
+        totalIncome += Number(element.amount);
+      } else {
+        totalAmount += Number(element.amount);
+      }
     }
-  }
 
-  // Calculamos los datos para el gráfico del mes actual
-  const { orderCategoriesForPieDescription, labelsForPieChart, valuesForPieChart, totalAmountForThisMonth } = useMemo(() => {
     const combinedDivision = {};
     const categories = new Set();
     let totalAmountForThisMonth = 0;
@@ -82,8 +82,15 @@ const Stadistics = ({ chart }) => {
       );
     });
 
-    return { orderCategoriesForPieDescription, labelsForPieChart, valuesForPieChart, totalAmountForThisMonth };
-  }, [currentMonthTransactions, incomeCategoryColors, expenseCategoryColors, capitalAbailable]);
+    return {
+      orderCategoriesForPieDescription,
+      labelsForPieChart,
+      valuesForPieChart,
+      totalAmountForThisMonth,
+      totalIncome,
+      totalAmount,
+    };
+  }, [chart]);
 
   // Mostramos el gráfico solo si hay datos relevantes
   const colors = useMemo(() => {

@@ -59,7 +59,7 @@ const Reports = ({ info }) => {
       },
       {
         label: "Estimación de gastos a final del mes",
-        value: `$${(averageExpenses.toFixed(1) * daysInCurrentMonth + 1).toFixed(1)}`,
+        value: `$${((averageExpenses.toFixed(1) * daysInCurrentMonth + 1) + totalTravelExpenses).toFixed(1)}`,
       },
       {
         label: "Capital estimado a final del mes",
