@@ -1,7 +1,7 @@
 import React from 'react'
 import ToDoBox from '../dataBox/toDoBox'
 import { useState } from 'react';
-import DataBox from '../dataBox/PruebaBox';
+import DataBox from '../dataBox/dataBox';
 
 const ToDoListHistoryBox = () => {
 

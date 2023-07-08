@@ -78,13 +78,13 @@ button {
 }
 
 .canvasChartContainer {
-  width: 480px;
-  height: 480px;
-}
+  width: 280px; 
+  height: 280px;
+} /* 480 */
 
 .dashboardCarousel .activeSlideCarouselDiv {
-  height: 480px;
-}
+  height: 280px;
+} /* 480 */
 
 .indexPromotionCarousel .activeSlideCarouselDiv {
   height: 250px;

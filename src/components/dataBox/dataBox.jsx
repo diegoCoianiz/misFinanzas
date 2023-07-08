@@ -3,8 +3,9 @@ import stylesCss from "../../styles/dataBox.module.css"
 import Link from 'next/link'
 import Image from 'next/image'
 
-const DataBox = ({type="egreso", buttonColor=["red","blue"], category="ninguna", desiredDate=new Date().toLocaleTimeString, amount=0, notes="", transaction_id=""}) => {
+const DataBox = ({type="egreso", buttonColor=["red","blue"], category="ninguna", amount=0, notes="", transaction_id=""}) => {
   const notesLength = 10
+  const desiredDate=new Date().toLocaleTimeString()
 
   const handleDelete = () => console.log("")
     return (

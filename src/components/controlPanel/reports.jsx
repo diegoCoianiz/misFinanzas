@@ -63,7 +63,7 @@ const Reports = ({ info }) => {
       },
       {
         label: "Capital estimado a final del mes",
-        value: `$${(capital - averageExpenses * (daysInCurrentMonth - currentDate) - totalTravelExpenses).toFixed(1)}`,
+        value: `$${(capital - averageExpenses * (daysInCurrentMonth - currentDate + 1) - totalTravelExpenses).toFixed(1)}`,
       },
     ];
   };

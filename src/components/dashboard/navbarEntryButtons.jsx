@@ -19,7 +19,7 @@ const DashboardEntryButtonsNavBar = ({ userId, events, toDoList, handleUpdateSho
             alt: "/transactions",
             width: 42,
             height: 45,
-            text: "Dinero",
+            text: "Gastos",
             link: false
         },
         // {

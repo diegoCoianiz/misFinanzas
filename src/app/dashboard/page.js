@@ -5,6 +5,7 @@ import TransactionsHistoryBox from "@/components/historyBox/transactionsHistoryB
 import ToDoListHistoryBox from '@/components/historyBox/toDoListHistoryBox';
 import ControlPanel from "@/components/controlPanel/controlPanel";
 import EventsHistoryBox from '@/components/historyBox/eventsHistoryBox';
+import UserCard from '@/components/controlPanel/userCard';
 
 export default function dashboard({ searchParams }) {
   // const [user, setUser] = useState("");
@@ -82,6 +83,7 @@ export default function dashboard({ searchParams }) {
 
         </div>
         <div className='indexRightSection dashboardRightSection' style={{ marginTop: "-15px" }}>
+          {/* <UserCard userId={searchParams.id} /> */}
           <ControlPanel transactions={transactions} groupedTransactions={groupedTransactions} userId={searchParams.id} events={events} />
         </div>
       </div >
