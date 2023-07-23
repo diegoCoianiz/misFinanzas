@@ -35,14 +35,15 @@ const Reports = ({ info }) => {
 
   // 1) Función para calcular el promedio de gastos en el mes sin considerar el alquiler ni los días en los que no se gastó dinero
   const getAverageExpensesInMonthWithNoRent = () => {
-    const numExpenses = relevantTransactions.length;
+
     const totalRelevantExpenses = relevantTransactions.reduce((acc, cur) => acc + cur.amount, 0);
     const totalTravelExpenses = travelTransactions.reduce((acc, cur) => acc + cur.amount, 0)
-    const averageExpenses = totalRelevantExpenses / numExpenses;
+    const averageExpenses = totalRelevantExpenses / currentDate;
     const capital = totalOfCapital.reduce((acc, cur) => {
       const amount = parseFloat(cur.amount);
       return acc + (cur.type === "egreso" ? -amount : amount);
     }, 0);
+console.log(daysInCurrentMonth, currentDate )
 
     return [
       {
@@ -51,19 +52,19 @@ const Reports = ({ info }) => {
       },
       {
         label: "Total de gastos hasta la fecha (con viajes incluidos)",
-        value: `$${(averageExpenses * numExpenses + totalTravelExpenses).toFixed(1)}`,
+        value: `$${(totalRelevantExpenses).toFixed(1)}`,
       },
       {
         label: `Proyección para los próximos ${daysInCurrentMonth - currentDate + 1} días`,
-        value: `$${(averageExpenses * (daysInCurrentMonth - currentDate + 1)).toFixed(1)}`,
+        value: `$${(averageExpenses.toFixed(1) * (daysInCurrentMonth - currentDate + 1)).toFixed(1)}`,
       },
       {
         label: "Estimación de gastos a final del mes",
-        value: `$${((averageExpenses.toFixed(1) * daysInCurrentMonth + 1) + totalTravelExpenses).toFixed(1)}`,
+        value: `$${((averageExpenses.toFixed(1) * daysInCurrentMonth) + totalTravelExpenses).toFixed(1)}`,
       },
       {
         label: "Capital estimado a final del mes",
-        value: `$${(capital - averageExpenses * (daysInCurrentMonth - currentDate + 1) - totalTravelExpenses).toFixed(1)}`,
+        value: `$${(capital - averageExpenses.toFixed(1) * (daysInCurrentMonth - currentDate + 1) - totalTravelExpenses).toFixed(1)}`,
       },
     ];
   };
