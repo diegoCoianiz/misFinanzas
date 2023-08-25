@@ -8,7 +8,7 @@ const ControlPanel = ({transactions, groupedTransactions, userId, events}) => {
 
     return (
         <div >
-            <h1 style={{ textAlign: "start", margin:"10px" }}>{"<"} Panel de control: {">"}</h1>
+            <h1 style={{ textAlign: "start", margin:"20px" }}>{"<"} Panel de control: {">"}</h1>
             <div className="dashboardCarousel">
                 <Carousel timeCondition={false}>
                     <div>

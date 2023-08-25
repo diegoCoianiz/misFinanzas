@@ -5,7 +5,7 @@ import TransactionsHistoryBox from "@/components/historyBox/transactionsHistoryB
 import ToDoListHistoryBox from '@/components/historyBox/toDoListHistoryBox';
 import ControlPanel from "@/components/controlPanel/controlPanel";
 import EventsHistoryBox from '@/components/historyBox/eventsHistoryBox';
-// import UserCard from '@/components/controlPanel/userCard';
+import UserCard from '@/components/controlPanel/userCard';
 
 export default function dashboard({ searchParams }) {
   // const [user, setUser] = useState("");

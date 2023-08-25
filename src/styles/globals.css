@@ -113,6 +113,10 @@ button {
   animation: shadowAnimation 5s linear infinite;
 }
 
+.userCard {
+  height: 160px;
+}
+
 @keyframes shadowAnimation {
   0% {
       box-shadow: 0 0 2px 2px#00c8ff, 0 0 2px 2px #3c67e3, 0 0 2px 2px #4e00c2;

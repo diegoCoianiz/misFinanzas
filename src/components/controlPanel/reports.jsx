@@ -33,17 +33,16 @@ const Reports = ({ info }) => {
 
   /*--------------------------------------------------------------------------------------------------------------------------*/
 
-  // 1) Función para calcular el promedio de gastos en el mes sin considerar el alquiler ni los días en los que no se gastó dinero
+  // 1) Función para calcular el promedio de gastos en el mes sin considerar el alquiler.
   const getAverageExpensesInMonthWithNoRent = () => {
 
-    const totalRelevantExpenses = relevantTransactions.reduce((acc, cur) => acc + cur.amount, 0);
+    const totalRelevantExpenses = relevantTransactionsWithTravels.reduce((acc, cur) => acc + cur.amount, 0);
     const totalTravelExpenses = travelTransactions.reduce((acc, cur) => acc + cur.amount, 0)
     const averageExpenses = totalRelevantExpenses / currentDate;
     const capital = totalOfCapital.reduce((acc, cur) => {
       const amount = parseFloat(cur.amount);
       return acc + (cur.type === "egreso" ? -amount : amount);
     }, 0);
-console.log(daysInCurrentMonth, currentDate )
 
     return [
       {

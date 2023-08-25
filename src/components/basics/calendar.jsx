@@ -117,11 +117,7 @@ const Calendar = ({ groupedTransactions, userId, events }) => {
         <tbody>
           {calendarRows.map((week, id) => (
             <tr key={`${week}+${id}`}>
-
-
-
               {week.map((day, id) => {
-                
                 // Verificar si el día actual está dentro del rango de un evento en el mismo mes y año
                 const isInEventRange = eventDates.some(event => {
                   const startDate = new Date(event.start);
