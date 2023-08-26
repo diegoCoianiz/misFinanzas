@@ -36,7 +36,7 @@ const Reports = ({ info }) => {
   // 1) Función para calcular el promedio de gastos en el mes sin considerar el alquiler.
   const getAverageExpensesInMonthWithNoRent = () => {
 
-    const totalRelevantExpenses = relevantTransactionsWithTravels.reduce((acc, cur) => acc + cur.amount, 0);
+    const totalRelevantExpenses = relevantTransactions.reduce((acc, cur) => acc + cur.amount, 0);
     const totalTravelExpenses = travelTransactions.reduce((acc, cur) => acc + cur.amount, 0)
     const averageExpenses = totalRelevantExpenses / currentDate;
     const capital = totalOfCapital.reduce((acc, cur) => {
@@ -51,19 +51,19 @@ const Reports = ({ info }) => {
       },
       {
         label: "Total de gastos hasta la fecha (con viajes incluidos)",
-        value: `$${(totalRelevantExpenses).toFixed(1)}`,
+        value: `$${(totalRelevantExpenses + totalTravelExpenses).toFixed(1) } `,
       },
       {
         label: `Proyección para los próximos ${daysInCurrentMonth - currentDate + 1} días`,
         value: `$${(averageExpenses.toFixed(1) * (daysInCurrentMonth - currentDate + 1)).toFixed(1)}`,
       },
       {
-        label: "Estimación de gastos a final del mes",
+        label: "Estimación de gastos comunes a final del mes",
         value: `$${((averageExpenses.toFixed(1) * daysInCurrentMonth) + totalTravelExpenses).toFixed(1)}`,
       },
       {
         label: "Capital estimado a final del mes",
-        value: `$${(capital - averageExpenses.toFixed(1) * (daysInCurrentMonth - currentDate + 1) - totalTravelExpenses).toFixed(1)}`,
+        value: `$${(capital - averageExpenses.toFixed(1) * (daysInCurrentMonth - currentDate + 1) ).toFixed(1)}`,
       },
     ];
   };
