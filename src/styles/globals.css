@@ -246,11 +246,11 @@ button {
   }
 
   .userCard {
-    height: 130px;
+    height: 100px;
   }
   .userCardOptions {
     gap: 2rem;
-    margin: 60px 10px
+    margin: 10px 00px
   }
 
 }

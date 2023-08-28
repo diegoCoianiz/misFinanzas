@@ -4,7 +4,7 @@ const UserCard = ({ userId }) => {
   return (
     <div className='userCard'>
       <header>
-        <h1>UserCard {userId}</h1>
+        <h1 style={{textAlign:"end"}}>UserCard {userId}</h1>
       </header>
       <main className='userCardOptions'>
         <h3>Cambiar cuenta</h3>
