@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import EntryButton from './entryButton'
 
 const DashboardEntryButtonsNavBar = ({ userId, events, toDoList, handleUpdateShowHistoryOf, showHistoryOf }) => {
@@ -22,22 +21,22 @@ const DashboardEntryButtonsNavBar = ({ userId, events, toDoList, handleUpdateSho
             text: "Gastos",
             link: false
         },
-        // {
-        //     img: "https://cdn-icons-png.flaticon.com/512/4870/4870198.png",
-        //     alt: "/toDoList",
-        //     width: 35,
-        //     height: 42,
-        //     text: "Lista",
-        //     link: false,
-        //     documentsLength: toDoList
-        // },
-        // {
-        //     img: "https://cdn-icons-png.flaticon.com/512/1292/1292972.png",
-        //     alt: "desafios",
-        //     width: 40,
-        //     height: 40,
-        //     text: "Metas"
-        // },
+        {
+            img: "https://cdn-icons-png.flaticon.com/512/4870/4870198.png",
+            alt: "/toDoList",
+            width: 35,
+            height: 42,
+            text: "Lista",
+            link: false,
+            documentsLength: toDoList
+        },
+        {
+            img: "https://cdn-icons-png.flaticon.com/512/3075/3075908.png",
+            alt: "/notes",
+            width: 40,
+            height: 40,
+            text: "Notas"
+        },
         // {
         //     img: "https://cdn-icons-png.flaticon.com/512/10479/10479318.png",
         //     alt: "compartidos",
@@ -49,7 +48,7 @@ const DashboardEntryButtonsNavBar = ({ userId, events, toDoList, handleUpdateSho
 
     return (
         <>
-            <div style={{ display: "flex", flexDirection: "column", margin: "0px 10px" }}>
+            <div style={{ display: "flex", flexDirection: "column", margin: "0px -10px" }}>
                 <EntryButton link={true} img={"https://cdn-icons-png.flaticon.com/512/3523/3523887.png"} alt={"/dashboard/entrys/new"} width={45 + newSize} height={45 + newSize} userId={userId} />
                 <h6 style={{ marginTop: "0px" }}>Nuevo</h6>
             </div>

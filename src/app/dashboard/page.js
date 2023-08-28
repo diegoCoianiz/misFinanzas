@@ -76,14 +76,14 @@ export default function dashboard({ searchParams }) {
           </div>
           {showHistoryOf === "transactions" ?
             <TransactionsHistoryBox transactions={transactions} groupedTransactions={groupedTransactions} />
-            : showHistoryOf === "events" ?
-              <EventsHistoryBox events={events} /> :
-              <ToDoListHistoryBox toDoList={toDoList} />
+            : showHistoryOf === "events" ? 
+              <EventsHistoryBox events={events} /> : showHistoryOf === "toDoList" ? 
+              <ToDoListHistoryBox toDoList={toDoList} /> : null //<NotesHistoryBox  />
           }
 
         </div>
         <div className='indexRightSection dashboardRightSection' style={{ marginTop: "-15px" }}>
-          {/* <UserCard userId={searchParams.id} /> */}
+          <UserCard userId={searchParams.id} />
           <ControlPanel transactions={transactions} groupedTransactions={groupedTransactions} userId={searchParams.id} events={events} />
         </div>
       </div >
